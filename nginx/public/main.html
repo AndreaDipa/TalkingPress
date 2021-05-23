@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main_style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <title>TalkingPress</title>
+</head>
+<body>
+    <nav class="navbar navbar-light" id="mynav">
+        <a class="navbar-brand" id="tp" href="." >Talking Press</a>
+        
+        <button class="btn btn-light type="button">
+            Profile
+        </button>
+    
+    </nav>
+    <div class="container-fluid" id ="my-body">
+        <div class="row" id="news">
+            <h1 class="col-12" id="titolo"></h1>
+            <p class="col-11" id="descrizione"></p>
+            <button id="salva" class="col-1 btn btn-info">Salva</button>
+        </div>
+    
+        <div class="row" >
+             <pre class="col-6 form-control" id="messages"></pre>       
+             <ul id="tweets" class=" col-5 list-group list-group-flush">
+                <li id="t1" class="list-group-item">First item</li>
+                <li id="t2" class="list-group-item">Second item</li>
+                <li id="t3" class="list-group-item">Third item</li>
+                <li id="t4" class="list-group-item">Fourth item</li>
+            </ul> 
+           
+        </div>
+        <div class="row" >
+           <input class="col-5" type="text" id="messageBox" placeholder="Type your message here"/>
+           <button class="col-1 btn btn-info" id="send" title="Send Message" >Send</button>
+           
+           <input class="col-4" type="text" id="tweetBox" placeholder="Type your tweet here"/>
+           <button class="col-1 btn btn-info" id="sendTweet" title="Send Tweet" >Tweet</button>
+
+
+       </div>
+            
+    </div>
+        <script>
+            $(document).ready(() => {
+               function getCookie(name) {
+                    const value = `; ${document.cookie}`;
+                    const parts = value.split(`; ${name}=`);
+                    if (parts.length === 2) return parts.pop().split(';').shift();
+                }
+                const x = getCookie('x-auth-token');
+                let tit, desc;
+                $.ajax({
+                    url: '/api/events',
+                    type: 'GET',
+                    dataType: 'json',
+                    beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', x);},
+                    success: function(res) { tit = res.title;
+                                             desc = res.description;
+                                             $('#titolo').html(tit);
+                                             $('#descrizione').html(desc);; },
+                    error: function() { console.log('error ajax') },    
+                    });
+
+                $('#salva').click( () => {
+                    $.ajax({
+                        url: '/api/events',
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', x);},
+                        data: JSON.stringify({ title: tit, description: desc }),
+                        success: function(data) { alert((data)) },
+                        error: function(err) { console.log('error ajax') },
+                    
+                    });
+                })
+                $('#sendTweet').click( () => {
+                    const t = $('#tweetBox').val();
+                    $.ajax({
+                        url: '/twitter/tweets',
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', x);},
+                        data: JSON.stringify({ tweet: t }),
+                        success: function(data) { $('#tweetBox').val(''); },
+                        error: function(err) { console.log('error ajax tweet') },
+                    
+                    });
+                })
+                
+               $(document).on('keypress',function(e) {
+                if(e.which == 13) {
+                    if ($('#messageBox').is(':focus')) 
+                        $('#send').click();
+                    if ($('#tweetBox').is(':focus'))
+                        $('#sendTweet').click();
+                }
+                    
+                });
+                $.ajax({
+                    url: '/twitter/tweets',
+                    type: 'GET',
+                    dataType: 'json',
+                    beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', x);},
+                    success: function(res) { 
+                                             $('#t1').html(res.t1);
+                                             $('#t2').html(res.t2)
+                                             $('#t3').html(res.t3)
+                                             $('#t4').html(res.t4) },
+                    error: function() { console.log('error ajax') },    
+                    });
+                
+
+           })
+            
+            
+      </script>
+        <script>
+            (function() {
+                const sendBtn = document.querySelector('#send');
+                const messages = document.querySelector('#messages');
+                const messageBox = document.querySelector('#messageBox');
+                let ws;
+                
+                function showMessage(message) {
+                   
+                    messages.textContent += `\n\n${message}`;
+                    messages.scrollTop = messages.scrollHeight;
+                    messageBox.value = '';
+                }
+
+                function init() {
+                    if (ws) {
+                        ws.onerror = ws.onopen = ws.onclose = null;
+                        ws.close();
+                    }
+
+                    ws = new WebSocket(`ws://server_ws:6969`);
+                    ws.onopen = () => {
+                        console.log('connection opened');
+                    }
+                    ws.onmessage = ({data}) => showMessage(data);
+                    ws.onclose = function() {
+                        ws = null;
+                    }
+                }
+                sendBtn.onclick = function() {
+                    if (!ws) {
+                        showMessage("no WS connection :(");
+                        return;
+                    }
+                    if (messageBox.value != "") {
+                        ws.send(messageBox.value);
+                        showMessage(messageBox.value);
+                    }
+                }
+                init();
+                
+                
+            })();
+        </script>
+        
+</body>
+</html>
