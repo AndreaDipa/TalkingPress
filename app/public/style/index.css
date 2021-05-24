@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+html,body{
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    background: linear-gradient(180deg, #6B0F1A 43.16%, rgba(107, 15, 26, 0.53) 100%);
+}
+
+/*
+#background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    
+    background: linear-gradient(180deg, #6B0F1A 43.16%, rgba(107, 15, 26, 0.53) 100%);
+}
+*/
+
+#Card1{
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 42px;
+    margin: 0px 30px;
+    margin-bottom: 100px;
+}
+
+h2{
+    font-weight: 600;
+}
+
+.bottone-1{
+    background-color: #BCBDC0;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    width: 60%;
+    
+    color: black;
+    margin-bottom: 30px;
+}
+
+#titolo{
+    padding: 40px 0px;
+    padding-bottom: 55px;
+}
+
+#bottoni{
+    padding-bottom: 10px;
+}
