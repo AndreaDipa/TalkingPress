@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+html,body{
+    height: 100%;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    background: linear-gradient(180deg, #6B0F1A 43.16%, rgba(107, 15, 26, 0.53) 100%);
+}
+
+#Card1{
+    background-color: white;
+    border-radius: 42px;
+}
+
+.back-container{
+    width: 80%;
+    max-width: 650px;
+    margin: 0px 30px;
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 650px){
+    .back-container{
+        margin-bottom: 50px;
+    }
+}
+
+h2{
+    font-weight: 600;
+}
+
+input{
+    background-color: #ECEDEE;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 40px;
+    width: 60%;
+}
+
+input:focus{
+    border: 2px solid #6b0f1a9f;
+    border-radius: 12px;
+    outline: none;
+}
+
+.bottone-2{
+    background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    width: 60%;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.bottone-twitter{
+    background-color: #1DA1F2;
+    border-radius: 40px;
+    border-style: none;
+    padding: 12px 40px;
+    width: 60%;
+
+    color: white;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
