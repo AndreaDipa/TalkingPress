@@ -9,7 +9,7 @@
   <ul>
     <li> Gli endpoint /api/users and /api/auth sono invertiti (errore mio) </li>
     <li> da decidere se lasciare l'input per mandare dei tweet o se mettere gli ultimi tweet in base alle parole chiave della news corrente </li>
-    <li> il front end è ancora da progettare, la posizione degli elementi della pagina è il primo che mi è venuto in mente :) </li>
+    <li> il front end è ancora da progettare, la posizione degli elementi della pagina è il primo che mi è venuto in mente :) prova </li>
   </ul>
 </p>
 
