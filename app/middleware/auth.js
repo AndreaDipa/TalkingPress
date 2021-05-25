@@ -3,7 +3,7 @@ const config = require('config');
 
 function auth(req, res, next) {
     const token = req.cookies['x-auth-token'];
-    if (!token) return res.status(401).send('access denied');
+    if (!token) return res.status(401).redirect('/pages/login.html');
 
     try {
         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));
@@ -11,7 +11,7 @@ function auth(req, res, next) {
         next()
     }
     catch(ex) {
-        res.status(400).send('invalid token');
+        res.status(400).redirect('/pages/login.html')
     }
 }
 

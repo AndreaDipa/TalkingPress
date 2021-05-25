@@ -22,7 +22,6 @@ path = require('path');
 
 //PORTA
 const PORT = process.env.PORT || 5000;
-//APP
 
 
 //CONTROLLO SECRET KEY PER HASH
@@ -35,14 +34,6 @@ if (!config.get('jwtPrivateKey')) {
 mongoose.connect('mongodb://mongoserver:27017/TalkingPress', { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true })
     .then(console.log('connected to TalkingPress db'))
     .catch(err => console.log('cant connect to mongo: ' + err.message));
-
-
-//DOVE TROVARE FILE STATICI PER FRONTEND
-
-
-
-
-//SCAMBIO DI OGGETTI JSON
 
 app.use(session({
     secret: 'twitter-auth-session',
