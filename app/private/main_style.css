@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+html,body{
+    font-family: 'Rubik', sans-serif;
+}
+
+
 #messageBox { 
     height: 50px; 
     display: block; 
@@ -58,7 +65,7 @@
 }
 #tp {
     color: white; 
-    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
 }
 #mynav {
     background-color: maroon;

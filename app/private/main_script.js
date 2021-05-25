@@ -1,5 +1,6 @@
 $(document).ready(() => {
-     let tit, desc;
+
+    let tit, desc;
      $.ajax({
          url: '/api/events',
          type: 'GET',
@@ -60,7 +61,8 @@ $(document).ready(() => {
                                   $('#t4').html(res.t4) },
          error: function() { console.log('error ajax') },    
          });
-    (function() {
+
+        (function() {
             const sendBtn = document.querySelector('#send');
             const messages = document.querySelector('#messages');
             const messageBox = document.querySelector('#messageBox');
@@ -102,5 +104,17 @@ $(document).ready(() => {
             
         })();
 
+    $.ajax({
+        url: '/api/users/me',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            console.log(res);
+        },
+        error: function (p) {
+            console.log('error ajax username');
+        },
+    });
+    
 });
 
