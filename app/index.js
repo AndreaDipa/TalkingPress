@@ -10,11 +10,15 @@ const passport = require('passport');
 const twitter = require('./routes/twitter');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+
+const auths = require('./middleware/auth');
+
 const events = require('./routes/events');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const app = express();
-app.use(express.urlencoded({extended: true}));
-app.use(express.json()) 
+path = require('path');
+
 
 //PORTA
 const PORT = process.env.PORT || 5000;
@@ -32,11 +36,14 @@ mongoose.connect('mongodb://mongoserver:27017/TalkingPress', { useUnifiedTopolog
     .then(console.log('connected to TalkingPress db'))
     .catch(err => console.log('cant connect to mongo: ' + err.message));
 
-path = require('path');
+
 //DOVE TROVARE FILE STATICI PER FRONTEND
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
 //SCAMBIO DI OGGETTI JSON
-app.use(express.json());
+
 app.use(session({
     secret: 'twitter-auth-session',
     resave: true,
@@ -46,24 +53,18 @@ app.use(session({
         sameSite: 'Lax'
     }
 }))
+app.use(cookieParser());
+app.use(express.urlencoded({extended: true}));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-app.get('/', (req,res) => {
-    res.sendFile('./public/login.html', { root: __dirname });
-})
-
-
-
-
-
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/events', events);
 app.use('/twitter', twitter);
-
+app.use(auths, express.static(path.join(__dirname, 'private')));
 //AVVIO SERVER
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);

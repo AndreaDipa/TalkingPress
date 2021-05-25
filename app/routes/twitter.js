@@ -58,11 +58,12 @@ router.get('/login', passport.authenticate('twitter'));
 router.get('/return', passport.authenticate('twitter', { failureRedirect: '/auth/error' }),
 async function(req, res) {
 
- // const user = await Twitter_User.findOne({twitterId: req.user.id});
- // const token = user.generateAuthToken();
-  
+  const user = await Twitter_User.findOne({twitterId: req.user.id});
+  const token = user.generateAuthToken();
+
   //res.cookie('x-auth-token', token).sendFile('main.html', { root: path.join(__dirname, '../public') });
-  res.redirect('/twitter/main')
+  //res.redirect('/twitter/main')
+  res.cookie('x-auth-token', token).redirect('http://localhost/main.html')
 });
 
 
@@ -85,7 +86,7 @@ router.get('/tweets', auth, async (req,res) => {
     if (!user) {
       const u = await User.findById(req.user._id);
       if (u)
-         return res.send('no logged :(');
+         return res.status(401).send('no logged :(');
     }
     let bytes  = CryptoJs.AES.decrypt(user.token, 'secret 123');
     const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
