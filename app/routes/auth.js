@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const {User, validate} = require('../models/user');
+const {User, validate, validateLogin} = require('../models/user');
 const Joi = require('joi');
 const config = require('config');
 const path = require('path');
@@ -12,7 +12,7 @@ const router = express.Router();
 //LOGIN
 router.post('/', async (req, res) => {
     
-    const { error } = validate(req.body);
+    const { error } = validateLogin(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     let user = await User.findOne({email: req.body.email});
