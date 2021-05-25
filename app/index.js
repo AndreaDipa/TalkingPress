@@ -56,6 +56,11 @@ app.use('/api/auth', auth);
 app.use('/api/events', events);
 app.use('/twitter', twitter);
 app.use(auths, express.static(path.join(__dirname, 'private')));
+
+app.get('/logout', auths, (req, res) => {
+    res.clearCookie('x-auth-token').redirect('/index.html')
+})
+
 //AVVIO SERVER
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);

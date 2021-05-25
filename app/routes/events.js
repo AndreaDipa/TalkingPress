@@ -25,11 +25,7 @@ router.get('/',auth, async (req, res) => {
 
 router.post('/', auth, async (req, res) => {
     
-    let event = await Event.findOne({title: req.body.title});
-    if (!event) {
-        event = new Event({title: req.body.title, description: req.body.description, comment: req.body.comment});
-        await event.save();
-    }
+    const event = new Event({title: req.body.title, description: req.body.description, comment: req.body.comment});
     
     let user = await User.findByIdAndUpdate(req.user._id, {'$addToSet': {'events': event}}, {'new': true}).select('-password');
     if (!user) {

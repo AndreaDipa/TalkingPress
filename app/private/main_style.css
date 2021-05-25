@@ -27,8 +27,11 @@
     height: 50px; 
     background-color: maroon;
 }
-#salva {
+#save {
     height: 50px; 
+    background-color: maroon;
+}
+#salva {
     background-color: maroon;
 }
 #sendTweet {
@@ -51,7 +54,7 @@
 #my-body {
     margin-left: 1%; 
     margin-bottom: 1%;
-     width: 100%;
+     width: 99%;
 }
 #tp {
     color: white; 
