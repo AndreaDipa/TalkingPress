@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bcrypt = require('bcrypt');
 const {User, validate} = require('../models/user');
+const Twitter_User = require('../models/twitter_user');
 const auth = require('../middleware/auth');
 
 //ROUTER
@@ -13,7 +14,10 @@ const router = express.Router();
 //PROFILO (si potrebbe creare anche route a parte)
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
-    res.send(user);
+    if(!user){
+        user = await Twitter_User.findById(req.twitter_user._id).select('-tokenSecret');
+    }
+    res.json(user);
 
 });
 //REGISTER
