@@ -109,7 +109,7 @@ $(document).ready(() => {
         type: 'GET',
         dataType: 'json',
         success: function(res) {
-            console.log(res);
+            $('#dropdownMenuLink').html(res.username);
         },
         error: function (p) {
             console.log('error ajax username');
