@@ -23,12 +23,6 @@ body{
     margin-bottom: 100px;
 }
 
-@media screen and (max-width: 650px){
-    .back-container{
-        margin-bottom: 50px;
-    }
-}
-
 h2{
     font-weight: 600;
 }
@@ -66,4 +60,24 @@ a{
 
 a:hover{
     color: #c53041;
+}
+
+@media screen and (max-width: 650px){
+    .back-container{
+        width: 90%;
+        margin-bottom: 50px;
+    }
+
+    input{
+        width: 80%;
+        padding: 12px 20px;
+    }
+
+    .bottone-2{
+        width: 80%;
+    }
+
+    h5{
+        font-size: medium;
+    }
 }
