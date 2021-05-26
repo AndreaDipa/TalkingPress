@@ -12,12 +12,14 @@ const users = require('./routes/users');
 const auth = require('./routes/auth');
 
 const auths = require('./middleware/auth');
+const chat = require('./routes/chat');
 
 const events = require('./routes/events');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const app = express();
-path = require('path');
+const path = require('path');
+const expressWs = require('express-ws')(app);
 
 
 //PORTA
@@ -55,6 +57,7 @@ app.use('/api/users', users);
 app.use('/api/auth', auth);
 app.use('/api/events', events);
 app.use('/twitter', twitter);
+app.use('/chat', chat);
 app.use(auths, express.static(path.join(__dirname, 'private')));
 
 app.get('/logout', auths, (req, res) => {

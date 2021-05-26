@@ -10,9 +10,23 @@ const router = express.Router();
 const url = `https://api.thenewsapi.com/v1/news/top?api_token=${config.get('newsKey')}&locale=it&limit=1`;
 
 //CRUD
-router.get('/',auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     let data = await fetch(url);
     data = await data.json();
+    let event =await Event.findOne({title: data.data[0].title});
+    if (!event) {
+        event = new Event({title: data.data[0].title, description: data.data[0].description});
+        await event.save();
+    }
+    res.send(event);
+    
+    
+})
+
+router.get('/:cat', auth, async (req, res) => {
+    let data = await fetch(url + `&categories=${req.params.cat}`);
+    data = await data.json();
+    if (data.meta.found == 0) return res.status(404).end();
     let event =await Event.findOne({title: data.data[0].title});
     if (!event) {
         event = new Event({title: data.data[0].title, description: data.data[0].description});

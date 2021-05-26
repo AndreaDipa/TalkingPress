@@ -63,7 +63,7 @@ async function(req, res) {
 
   //res.cookie('x-auth-token', token).sendFile('main.html', { root: path.join(__dirname, '../public') });
   //res.redirect('/twitter/main')
-  res.cookie('x-auth-token', token).redirect('http://localhost/main.html')
+  res.cookie('x-auth-token', token).redirect('http://localhost/home.html')
 });
 
 

@@ -14,11 +14,6 @@ services:
         environment: 
             - tp_jwtPrivateKey=mySecureKey
             - tp_newsKey=yb5LR596klIbnSZuhR1DYXst7gDX64Vv7Rr33ubR
-    server_ws:
-        build:
-            context: ./server_ws
-        ports: 
-            - "6969:6969"
     nginx:
         restart: always
         build:

@@ -1,16 +1,24 @@
 $(document).ready(() => {
 
     let tit, desc;
-     $.ajax({
-         url: '/api/events',
-         type: 'GET',
-         dataType: 'json',
-         success: function(res) { tit = res.title;
-                                  desc = res.description;
-                                  $('#titolo').html(tit);
-                                  $('#descrizione').html(desc);; },
-         error: function() { console.log('error ajax') },    
-         });
+    const sPageURL = window.location.search.substring(1);
+    const cat = sPageURL.split('=')[1]; 
+    $.ajax({
+        url: `/api/events/${cat}`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) { tit = res.title;
+                                 desc = res.description;
+                                 $('#titolo').html(tit);
+                                 $('#descrizione').html(desc);; },
+        error: function(err) { 
+            if (err.status == 404)
+            $('#titolo').html('Sembra che non ci siano notizie interessanti :/');
+            $('#save').attr("data-toggle", "");
+            $('#save').attr("data-target", "");
+                    
+        }    
+    });
       
     $('#salva').click( () => {
          $.ajax({
@@ -51,7 +59,7 @@ $(document).ready(() => {
          
      });
      $.ajax({
-         url: '/twitter/tweets',
+         url: `/twitter/tweets/${cat}`,
          type: 'GET',
          dataType: 'json',
          success: function(res) { 
@@ -71,7 +79,6 @@ $(document).ready(() => {
             function showMessage(message) {
                 messages.textContent += `\n\n${message}`;
                 messages.scrollTop = messages.scrollHeight;
-                messageBox.value = '';
             }
        
             function init() {
@@ -80,7 +87,7 @@ $(document).ready(() => {
                     ws.close();
                 }
        
-                ws = new WebSocket(`ws://server_ws:6969`);
+                ws = new WebSocket(`ws://localhost:5000/chat/${cat}`);
                 ws.onopen = () => {
                     console.log('connection opened');
                 }
@@ -97,6 +104,8 @@ $(document).ready(() => {
                 if (messageBox.value != "") {
                     ws.send(messageBox.value);
                     showMessage(messageBox.value);
+                    messageBox.value = '';
+
                 }
             }
             init();
