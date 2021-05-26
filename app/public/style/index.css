@@ -11,19 +11,6 @@ body{
     background: linear-gradient(180deg, #6B0F1A 43.16%, rgba(107, 15, 26, 0.53) 100%);
 }
 
-/*
-#background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    
-    background: linear-gradient(180deg, #6B0F1A 43.16%, rgba(107, 15, 26, 0.53) 100%);
-}
-*/
-
 #Card1{
     width: 80%;
     max-width: 600px;
@@ -55,4 +42,10 @@ h2{
 
 #bottoni{
     padding-bottom: 10px;
+}
+
+@media screen and (max-width: 650px){
+    .bottone-1{
+        width: 75%;
+    }
 }
