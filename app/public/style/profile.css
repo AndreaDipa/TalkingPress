@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+#textstories { 
+    height: 50px; 
+    display: block; 
+    width: 100%; 
+    margin-bottom: 10px; 
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 3px solid maroon;
+    margin-right: 10px;   
+}
+#logout {
+    height: 50px; 
+    background-color: maroon;
+}
+#chat {
+    height: 50px; 
+    background-color: maroon;
+}
+#tp {
+    color: white; 
+    font-family: 'Courier New', Courier, monospace;
+}
+#mynav {
+    background-color: maroon;
+}
