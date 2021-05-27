@@ -20,7 +20,7 @@ router.ws('/general', (ws, req) => {
     general.push(ws)
     ws.onmessage = function(msg) {
         general.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
                 client.send(msg.data);
     });
   };
@@ -33,7 +33,7 @@ router.ws('/science', (ws, req) => {
     
     ws.onmessage = function(msg) {
         science.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -45,7 +45,7 @@ router.ws('/sports', (ws, req) => {
     
     ws.onmessage = function(msg) {
         sports.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -57,7 +57,7 @@ router.ws('/business', (ws, req) => {
     
     ws.onmessage = function(msg) {
         business.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -69,7 +69,7 @@ router.ws('/health', (ws, req) => {
     
     ws.onmessage = function(msg) {
         healt.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -81,7 +81,7 @@ router.ws('/entertainment', (ws, req) => {
     
     ws.onmessage = function(msg) {
         entertainment.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -93,7 +93,7 @@ router.ws('/tech', (ws, req) => {
     
     ws.onmessage = function(msg) {
         tech.forEach(function (client) {
-            if (client != ws )
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -105,7 +105,7 @@ router.ws('/politics', (ws, req) => {
     
     ws.onmessage = function(msg) {
         politics.forEach(function (client) {
-            if (client != ws )
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -117,7 +117,7 @@ router.ws('/food', (ws, req) => {
     
     ws.onmessage = function(msg) {
         food.forEach(function (client) {
-            if (client != ws )
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };
@@ -130,7 +130,7 @@ router.ws('/travel', (ws, req) => {
 
     ws.onmessage = function(msg) {
         travel.forEach(function (client) {
-            if (client != ws)
+            if (client != ws && client.readyState == 1)
             client.send(msg.data);
         });
   };

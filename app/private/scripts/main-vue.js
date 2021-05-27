@@ -33,7 +33,22 @@ const app = Vue.createApp({
                 }
                 self.tweets= res;
             },
-            error: function() { console.log('error ajax') },    
+            error: function(err) { 
+                if (err.status == 401) {
+                    self.tweets = [{
+                        'text': '',
+                        'user_name': 'Not Logged',
+                        'user_profile_img' : 'propic.png'
+                    }];
+                
+                $('#login').attr('href', '/twitter/login');
+                $('#login').html('Login with twitter');
+                $('#tweetBox').hide();
+                $('#sendTweet').hide();
+
+
+                }
+             },    
         });
     }
 })

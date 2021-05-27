@@ -48,6 +48,19 @@ $(document).ready(() => {
          
          });
      })
+     let user;
+     $.ajax({
+        url: '/api/users/me',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            user = res.username;
+            $('#navbarDropdownMenuLink').html(user);
+        },
+        error: function (p) {
+            console.log('error ajax username');
+        },
+    });
      
     $(document).on('keypress',function(e) {
      if(e.which == 13) {
@@ -91,7 +104,7 @@ $(document).ready(() => {
                     return;
                 }
                 if (messageBox.value != "") {
-                    ws.send(messageBox.value);
+                    ws.send(messageBox.value + `\t\t from: ${user}`);
                     showMessage(messageBox.value);
                     messageBox.value = '';
 
@@ -102,17 +115,7 @@ $(document).ready(() => {
             
         })();
 
-    $.ajax({
-        url: '/api/users/me',
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            $('#navbarDropdownMenuLink').html(res.username);
-        },
-        error: function (p) {
-            console.log('error ajax username');
-        },
-    });
+   
     
 });
 

@@ -120,7 +120,7 @@ router.get('/tweets/:topic', auth, async (req,res) => {
   if (!user) {
     const u = await User.findById(req.user._id);
     if (u)
-      res.send('no logged :(');
+      return res.status(401).end();
   }
   let bytes  = CryptoJs.AES.decrypt(user.token, 'secret 123');
   const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);

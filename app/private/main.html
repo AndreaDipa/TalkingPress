@@ -102,11 +102,12 @@
                             <li id="lista-tw" class="list-group-item" v-for="x in tweets">
                                 <div class="tweet-card">
                                     <div class="user-info row">
-                                        <img v-bind:src="x.user_profile_img" alt="Profile" class="col-1">
+                                        <img id="propic" v-bind:src="x.user_profile_img" alt="Profile" class="col-1">
                                         <h5 id="user-name" class="col">{{ x.user_name }}</h5>
                                     </div>
                                     <div class="main-card">
                                         <p>{{ x.text }}</p>
+                                        <a id="login"></a>
                                         <hr>
                                         <div class="row">
                                             <div class="col-2 cont-like">
