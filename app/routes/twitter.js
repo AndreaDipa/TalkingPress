@@ -94,12 +94,20 @@ router.get('/tweets', auth, async (req,res) => {
     })
  
     T.get('search/tweets', { q: 'israel', count: 4,  locale: 'it', result_type: 'popular'} , function(err, data, response) {
-      res.send({
-        't1': data.statuses[0].text,
-        't2': data.statuses[1].text,
-        't3': data.statuses[2].text,
-        't4': data.statuses[3].text,
-      })
+      res.send([
+        {
+          'text': data.statuses[0].text
+        },
+        {
+          'text': data.statuses[1].text
+        },
+        {
+          'text': data.statuses[2].text
+        },
+        {
+          'text': data.statuses[3].text
+        }
+      ])
       
       
     })
@@ -128,12 +136,20 @@ router.get('/tweets/:topic', auth, async (req,res) => {
   })
 
   T.get('search/tweets', { q: `${req.params.topic}`, count: 4,  locale: 'it', result_type: 'popular'} , function(err, data, response) {
-    res.send({
-      't1': data.statuses[0].text,
-      't2': data.statuses[1].text,
-      't3': data.statuses[2].text,
-      't4': data.statuses[3].text,
-    })
+    res.send([
+      {
+        'text': data.statuses[0].text
+      },
+      {
+        'text': data.statuses[1].text
+      },
+      {
+        'text': data.statuses[2].text
+      },
+      {
+        'text': data.statuses[3].text
+      }
+    ])
 
     
   })

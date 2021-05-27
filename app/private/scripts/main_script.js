@@ -58,17 +58,6 @@ $(document).ready(() => {
      }
          
      });
-     $.ajax({
-         url: `/twitter/tweets/${cat}`,
-         type: 'GET',
-         dataType: 'json',
-         success: function(res) { 
-                                  $('#t1').html(res.t1);
-                                  $('#t2').html(res.t2)
-                                  $('#t3').html(res.t3)
-                                  $('#t4').html(res.t4) },
-         error: function() { console.log('error ajax') },    
-         });
 
         (function() {
             const sendBtn = document.querySelector('#send');

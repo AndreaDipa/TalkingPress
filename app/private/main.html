@@ -96,12 +96,11 @@
 
             <div class="col align-self-center">
                 <div id="tweets">
-                    <ul class="list-group list-group-flush">
-                        <li id="t1" class="list-group-item">First item</li>
-                        <li id="t2" class="list-group-item">Second item</li>
-                        <li id="t3" class="list-group-item">Third item</li>
-                        <li id="t4" class="list-group-item">Fourth item</li>
-                    </ul> 
+                    <div id="tweet-vue">
+                        <ul class="list-group list-group-flush">
+                            <li id="t1" class="list-group-item" v-for="x in tweets">{{ x.text }}</li>
+                        </ul> 
+                    </div>
                     
                     <div class="row" id="inp-tweet">
                         <div class="col-9">
@@ -161,5 +160,6 @@
 
     <script src="https://unpkg.com/vue@3.0.11"></script>
     <script src="./scripts/main_script.js"></script>
+    <script src="./scripts/main-vue.js"></script>
 </body>
 </html>
