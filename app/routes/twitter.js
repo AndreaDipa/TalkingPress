@@ -9,7 +9,6 @@ const {User} = require('../models/user');
 const Twit = require('twit');
 const CryptoJs = require('crypto-js');
 const auth = require('../middleware/auth');
-const isLoggedIn = require('../middleware/isLoggedIn');
 
 const path = require('path');
 
@@ -67,14 +66,7 @@ async function(req, res) {
 });
 
 
-router.get('/main', isLoggedIn, async (req,res) => {
-    
-    const user = await Twitter_User.findOne({twitterId: req.user.id});
-    const token = user.generateAuthToken();
 
-    res.cookie('x-auth-token', token).sendFile('main.html', { root: path.join(__dirname, '../public') });
-
-})
 
 router.get('/main_style.css', async(req, res) => {
   res.sendFile('main_style.css', { root: path.join(__dirname, '../public') });
