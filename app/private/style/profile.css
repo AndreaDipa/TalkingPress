@@ -1,33 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
 html,body{
-    height: 100%;
     font-family: 'Rubik', sans-serif;
 }
-#textstories { 
-    height: 50px; 
-    display: block; 
-    width: 100%; 
-    margin-bottom: 10px; 
-    padding: 10px;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    border-bottom: 3px solid maroon;
-    margin-right: 10px;   
+
+body {
+    font-weight: 400;
+    line-height: 1.5;
 }
-#logout {
-    height: 50px; 
-    background-color: maroon;
-}
-#chat {
-    height: 50px; 
-    background-color: maroon;
-}
+
 #tp {
-    color: white; 
-    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: xx-large;
+    text-decoration: none;
+    white-space: nowrap;
 }
+
 #mynav {
-    background-color: maroon;
+    background-color: #6B0F1A;
+}
+
+#logout {
+    background-color: #ddc912;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    width: 60%;
+    color: #6B0F1A;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#chat {
+    background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    width: 60%;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#textstories { 
+    background-color: #C4C4C4; 
+    height: 400px; overflow: scroll; 
+    overflow-x: hidden; 
+    overflow-y: visible;
+    margin-top: 50px;
 }
