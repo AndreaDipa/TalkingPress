@@ -16,11 +16,11 @@ $(document).ready(() => {
     });
 
     $.ajax({
-        url: '/api/events',
+        url: '/api/users/me',
         type: 'GET',
         dataType: 'json',
         success: function(res) {
-            $('#textstories').html(res.title);
+            $('#textstories').html(res.events);
         },
         error: function (p) {
             console.log('error ajax username');
