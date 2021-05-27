@@ -21,7 +21,7 @@ const app = Vue.createApp({
                 {
                     title: 'Technology',
                     img: './assets/img/tech.jpg',
-                    link: 'technology'
+                    link: 'tech'
                 },
                 {
                     title: 'Politics',
@@ -67,7 +67,7 @@ $(document).ready(() => {
         type: 'GET',
         dataType: 'json',
         success: function(res) {
-            $('#dropdownMenuLink').html(res.username);
+            $('#navbarDropdownMenuLink').html(res.username);
         },
         error: function (p) {
             console.log('error ajax username');
