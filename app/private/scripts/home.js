@@ -67,7 +67,7 @@ $(document).ready(() => {
         type: 'GET',
         dataType: 'json',
         success: function(res) {
-            $('#dropdownMenuLink').html(res.username);
+            $('#navbarDropdownMenuLink').html(res.username);
         },
         error: function (p) {
             console.log('error ajax username');
