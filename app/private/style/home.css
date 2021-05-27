@@ -88,6 +88,15 @@ hr{
         font-size: medium;
     }
 
+    .tit{
+        margin-top: 30px;
+    }
+
+    #footer-cont{
+        margin-bottom: 0px;
+        padding: 20px;
+    }
+
     #card-1{
         margin: 30px;
     }

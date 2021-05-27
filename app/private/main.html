@@ -61,7 +61,7 @@
             <div id="tit-e-box" class="col-12 col-lg-7">
                 <h1 id="titolo"></h1>
                 <p id="descrizione"></p>
-                <button id="save" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#my-modal">Save</button>
+                <button id="save" data-bs-toggle="modal" data-bs-target="#my-modal">Save</button>
 
                 <!-- MODAL -->
                 <div id="my-modal" class="modal fade" tabindex="-1" aria-labelledby="provaLabel" aria-hidden="true">
@@ -72,7 +72,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <textarea name="comment" id="comment" class="form-control" style="min-width: 100%; height: 200px;"></textarea>
+                                <textarea name="comment" id="comment" class="form-control"></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -83,12 +83,13 @@
                 </div>
 
                 <pre class="form-control" id="messages"></pre>
+
                 <div class="row" id="inp-message">
-                    <div class="col-10">
+                    <div class="col-8 col-md-10">
                         <input type="text" id="messageBox" placeholder="Type your message here"/>
                     </div>
-                    <div class="col">
-                        <button class="btn btn-info" id="send" title="Send Message">Send</button>
+                    <div class="col col-md-2">
+                        <button id="send" title="Send Message">Send</button>
                     </div>
                 </div>
                 
@@ -141,29 +142,7 @@
                 
             </div>
 
-        </div>        
-        
-          
-    
-        <!-- Vecchio 
-        <div class="row" >
-             <pre class="col-6 form-control" id="messages"></pre>       
-             <ul id="tweets" class=" col-5 list-group list-group-flush">
-                <li id="t1" class="list-group-item">First item</li>
-                <li id="t2" class="list-group-item">Second item</li>
-                <li id="t3" class="list-group-item">Third item</li>
-                <li id="t4" class="list-group-item">Fourth item</li>
-            </ul> 
-           
         </div>
-        <div class="row" >
-           <input class="col-5" type="text" id="messageBox" placeholder="Type your message here"/>
-           <button class="col-1 btn btn-info" id="send" title="Send Message" >Send</button>
-           
-           <input class="col-4" type="text" id="tweetBox" placeholder="Type your tweet here"/>
-           <button class="col-1 btn btn-info" id="sendTweet" title="Send Tweet" >Tweet</button>
-        </div>
-        -->
 
 
     </div>
