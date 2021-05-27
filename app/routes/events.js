@@ -7,7 +7,7 @@ const Twitter_User = require('../models/twitter_user');
 
 const fetch = require('node-fetch');
 const router = express.Router();
-const url = `https://api.thenewsapi.com/v1/news/top?api_token=${config.get('newsKey')}&locale=it&limit=1`;
+const url = `https://api.thenewsapi.com/v1/news/top?api_token=${config.get('newsKey')}&locale=it,us&limit=1`;
 
 //CRUD
 router.get('/', auth, async (req, res) => {
