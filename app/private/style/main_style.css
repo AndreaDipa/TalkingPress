@@ -52,7 +52,9 @@ a{
     height: 400px; overflow: scroll; 
     overflow-x: hidden; 
     overflow-y: visible;
+    border-radius: 10px;
     margin-top: 50px;
+    line-height: 1.2rem;
 }
 
 #inp-message{
@@ -104,11 +106,59 @@ a{
 
 .cont-like p{
     margin: 0px;
-    margin-left: 10px;
+    margin-left: 7px;
+}
+
+.num-like{
+    margin-right: 10px;
 }
 
 #data p{
     margin: 0px;
+}
+
+#comment{
+    min-width: 100%;
+    height: 250px; 
+    resize: none;
+}
+
+#save{
+    background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#send{
+    background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px;
+    width: 100%;
+    
+    color: white;
+    font-size: 20px;
+}
+
+#salva{
+    background-color: #6B0F1A;
+}
+
+#sendTweet{
+    background-color: #1DA1F2;
+    border-radius: 12px;
+    border-style: hidden;
+    width: 100%;
+    padding: 12px 0px;
+    
+    color: white;
+    font-size: 18px;
 }
 
 @media screen and (max-width: 600px) {
@@ -118,6 +168,42 @@ a{
 
     .bottone-nav{
         font-size: medium;
+    }
+
+    #footer-cont{
+        margin-bottom: 0px;
+        padding: 20px;
+    }
+
+    #my-modal{
+        padding-top: 60px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    #tweets{
+        margin: 0px;
+    }
+
+    #inp-tweet{
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #send{
+        font-size: 17px;
+    }
+
+    #inp-message{
+        margin-bottom: 40px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    #tit-e-box{
+        margin-right: 5px;
+        margin-left: 5px;
     }
 }
 
@@ -147,19 +233,4 @@ a{
     background: transparent;
     border-bottom: 3px solid #1DA1F2;
     margin-right: 10px;
-}
-#send {
-    height: 50px; 
-    background-color: maroon;
-}
-#save {
-    height: 50px; 
-    background-color: maroon;
-}
-#salva {
-    background-color: maroon;
-}
-#sendTweet {
-    height: 50px; 
-    background-color: #1DA1F2;
 }

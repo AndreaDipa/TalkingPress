@@ -70,7 +70,7 @@ $(document).ready(() => {
              $('#sendTweet').click();
      }
          
-     });
+    });
 
         (function() {
             const sendBtn = document.querySelector('#send');
