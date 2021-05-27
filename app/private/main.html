@@ -96,9 +96,35 @@
 
             <div class="col align-self-center">
                 <div id="tweets">
+
                     <div id="tweet-vue">
                         <ul class="list-group list-group-flush">
-                            <li id="t1" class="list-group-item" v-for="x in tweets">{{ x.text }}</li>
+                            <li id="lista-tw" class="list-group-item" v-for="x in tweets">
+                                <div class="tweet-card">
+                                    <div class="user-info row">
+                                        <img v-bind:src="x.user_profile_img" alt="Profile" class="col-1">
+                                        <h5 id="user-name" class="col">{{ x.user_name }}</h5>
+                                    </div>
+                                    <div class="main-card">
+                                        <p>{{ x.text }}</p>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-2 cont-like">
+                                                <i class="far fa-heart"></i>
+                                                <p class="num-tweet">{{ x.favorite_count }}</p>
+                                            </div>
+                                            <div class="col-3 cont-like">
+                                                <i class="far fa-comment"></i>
+                                                <p class="num-tweet">{{ x.retweet_count }}</p>
+                                            </div>
+                                            <div id="data" class="col">
+                                                <p>{{ x.date }}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
                         </ul> 
                     </div>
                     

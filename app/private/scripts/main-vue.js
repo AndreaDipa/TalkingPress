@@ -2,7 +2,20 @@
 const app = Vue.createApp({
     data() {
         return {
-            tweets: null
+            tweets: [
+                {
+                    'text': 'Ciao amico sono di prova. Lorem ipsum ajaidsiahdaihdasihashiads',
+                    'date': 'Wed May 26 2021',
+                    'favorite_count': '1k',
+                    'retweet_count': '8k',
+                    'user_name': 'Ciaone'
+                },
+                {
+                    'text': 'Ciao amico sono di prova. Lorem ipsum ajaidsiahdaihdasihashiads'
+                },{
+                    'text': 'Ciao amico sono di prova. Lorem ipsum ajaidsiahdaihdasihashiads'
+                }
+            ]
         }
     },
     created() {
@@ -14,6 +27,10 @@ const app = Vue.createApp({
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                for(i=0;i<res.length;i++){
+                    let dateArray= res[i].date.split(' ');
+                    res[i].date= dateArray[0]+' '+dateArray[1]+' '+dateArray[2]+' '+dateArray[5];
+                }
                 self.tweets= res;
             },
             error: function() { console.log('error ajax') },    
