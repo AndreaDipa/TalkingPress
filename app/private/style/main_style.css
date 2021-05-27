@@ -71,6 +71,46 @@ a{
     margin-top: 30px;
 }
 
+#lista-tw{
+    border-width: 0px;
+    margin-bottom: 10px;
+}
+
+.tweet-card{
+    box-shadow: 1px 1px 10px 1px #a1a1a1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.user-info{
+    margin-bottom: 8px;
+}
+
+.user-info img{
+    width: 60px;
+    border-radius: 50%;
+}
+
+#user-name{
+    align-self: center;
+    margin-bottom: 0px;
+}
+
+.cont-like{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.cont-like p{
+    margin: 0px;
+    margin-left: 10px;
+}
+
+#data p{
+    margin: 0px;
+}
+
 @media screen and (max-width: 600px) {
     #tit-nav{
         font-size: larger;

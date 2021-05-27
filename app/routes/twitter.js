@@ -138,19 +138,38 @@ router.get('/tweets/:topic', auth, async (req,res) => {
   T.get('search/tweets', { q: `${req.params.topic}`, count: 4,  locale: 'it', result_type: 'popular'} , function(err, data, response) {
     res.send([
       {
-        'text': data.statuses[0].text
+        'text': data.statuses[0].text,
+        'favorite_count': data.statuses[0].favorite_count,
+        'retweet_count': data.statuses[0].retweet_count,
+        'date': data.statuses[0].created_at,
+        'user_name': data.statuses[0].user.screen_name,
+        'user_profile_img': data.statuses[0].user.profile_image_url
       },
       {
-        'text': data.statuses[1].text
+        'text': data.statuses[1].text,
+        'favorite_count': data.statuses[1].favorite_count,
+        'retweet_count': data.statuses[1].retweet_count,
+        'date': data.statuses[1].created_at,
+        'user_name': data.statuses[1].user.screen_name,
+        'user_profile_img': data.statuses[1].user.profile_image_url
       },
       {
-        'text': data.statuses[2].text
+        'text': data.statuses[2].text,
+        'favorite_count': data.statuses[2].favorite_count,
+        'retweet_count': data.statuses[2].retweet_count,
+        'date': data.statuses[2].created_at,
+        'user_name': data.statuses[2].user.screen_name,
+        'user_profile_img': data.statuses[2].user.profile_image_url
       },
       {
-        'text': data.statuses[3].text
+        'text': data.statuses[3].text,
+        'favorite_count': data.statuses[3].favorite_count,
+        'retweet_count': data.statuses[3].retweet_count,
+        'date': data.statuses[3].created_at,
+        'user_name': data.statuses[3].user.screen_name,
+        'user_profile_img': data.statuses[3].user.profile_image_url
       }
     ])
-
     
   })
 
