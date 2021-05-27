@@ -21,7 +21,7 @@ const app = Vue.createApp({
                 {
                     title: 'Technology',
                     img: './assets/img/tech.jpg',
-                    link: 'technology'
+                    link: 'tech'
                 },
                 {
                     title: 'Politics',

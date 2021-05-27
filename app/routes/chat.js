@@ -63,7 +63,7 @@ router.ws('/business', (ws, req) => {
   };
 })
 
-router.ws('/healt', (ws, req) => {
+router.ws('/health', (ws, req) => {
 
     healt.push(ws);
     
