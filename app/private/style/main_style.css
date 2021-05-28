@@ -59,6 +59,7 @@ a{
 
 #inp-message{
     margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 #tweets{
@@ -159,6 +160,46 @@ a{
     
     color: white;
     font-size: 18px;
+}
+
+#messages-box{
+    background-color: #6e3d43a1; 
+    height: 400px; overflow: scroll; 
+    overflow-x: hidden; 
+    overflow-y: visible;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#messaggio-cont{
+    margin: 0px;
+}
+
+#mes{
+    margin: 20px;
+    border-radius: 12px;
+    background-color: white;
+    width: max-content;
+}
+
+#mes-cont{
+    position: relative;
+    padding: 10px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+#mes-cont span{
+    font-size: 10px;
+    position: absolute;
+}
+
+
+#mes-mio{
+    margin: 20px;
+    border-radius: 12px;
+    background-color: rgb(172, 251, 67);
+    width: max-content;
 }
 
 @media screen and (max-width: 600px) {
