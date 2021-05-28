@@ -1,37 +1,38 @@
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const {eventSchema} = require('./event');
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const { eventSchema } = require("./event");
 
 const userSchema = new mongoose.Schema({
     twitterId: {
         type: String,
-        unique: true
+        unique: true,
     },
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     token: {
         type: String,
-        required: true
+        required: true,
     },
     tokenSecret: {
         type: String,
-        required: true
+        required: true,
     },
-    events: [{
-        type: eventSchema
-    }]
-
+    events: [
+        {
+            type: eventSchema,
+        },
+    ],
 });
 
-userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({_id : this._id}, config.get('jwtPrivateKey'));
+userSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign({ _id: this._id }, config.get("jwtPrivateKey"));
     return token;
-}
+};
 
-const Twitter_User = mongoose.model('Twitter_User', userSchema);
+const Twitter_User = mongoose.model("Twitter_User", userSchema);
 
 module.exports = Twitter_User;

@@ -1,43 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talking Press - Sign Up</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Talking Press - Sign Up</title>
+        <script src="../assets/lib/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="../assets/lib/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
-    <script src="../assets/lib/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="../assets/lib/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css"
+        />
+        <script src="../assets/lib/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+        <script src="../scripts/signup.js"></script>
 
-    <link rel="stylesheet" href="../style/signup.css">
-</head>
-<body>
-    
-    <form method="POST" action="/api/users" class="back-container">
-        <div id="Card1" class="container text-center">
-            <h2 class="pt-4">Create account</h2>
-            <div class="pt-4">
-                <div class="mb-3">
-                    <input type="text" name="username" placeholder="Username" required>
+        <link rel="stylesheet" href="../style/signup.css" />
+    </head>
+    <body>
+        <form
+            id="form"
+            method="POST"
+            action="/api/users"
+            class="back-container"
+        >
+            <div id="Card1" class="container text-center">
+                <h2 class="pt-4">Create account</h2>
+                <div class="pt-4">
+                    <div class="mb-3">
+                        <p id="invalid" style="color: red"></p>
+                        <input
+                            id="username"
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            required
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="E-mail"
+                            required
+                        />
+                    </div>
+
+                    <div class="mb-3">
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
                 </div>
-                    
+
                 <div class="mb-3">
-                    <input type="email" name="email" placeholder="E-mail" required>
+                    <button type="submit" class="bottone-2">Sign Up</button>
                 </div>
-                    
-                <div class="mb-3">
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
-                    
+                <h5 class="pb-4">
+                    Already have an account? <a href="./login.html">Sign In</a>
+                </h5>
             </div>
-
-            <div class="mb-3">
-                <button type="submit" class="bottone-2">Sign Up</button>
-            </div>
-            <h5 class="pb-4">Already have an account? <a href="./login.html">Sign In</a></h5>
-                
-        </div>
-    </form>
-
-</body>
+        </form>
+    </body>
 </html>
