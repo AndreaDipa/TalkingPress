@@ -43,6 +43,7 @@ router.get("/:cat", auth, async (req, res) => {
 
 router.post("/", auth, async (req, res) => {
     const event = new Event({
+        _id: req.body._id,
         title: req.body.title,
         description: req.body.description,
         comment: req.body.comment,
@@ -53,6 +54,7 @@ router.post("/", auth, async (req, res) => {
         { $addToSet: { events: event } },
         { new: true }
     ).select("-password");
+    
     if (!user) {
         user = await Twitter_User.findByIdAndUpdate(
             req.user._id,

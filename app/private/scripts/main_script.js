@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let tit, desc;
+    let tit, desc, id;;
     const sPageURL = window.location.search.substring(1);
     const cat = sPageURL.split("=")[1];
     $.ajax({
@@ -9,6 +9,7 @@ $(document).ready(() => {
         success: function (res) {
             tit = res.title;
             desc = res.description;
+            id = res._id;
             $("#titolo").html(tit);
             $("#descrizione").html(desc);
         },
@@ -30,6 +31,7 @@ $(document).ready(() => {
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
+                _id: id,
                 title: tit,
                 description: desc,
                 comment: $("#comment").val(),

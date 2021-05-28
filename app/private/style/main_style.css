@@ -149,6 +149,24 @@ a{
 
 #salva{
     background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+#close {
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 12px 40px;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 #sendTweet{
