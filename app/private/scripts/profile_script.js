@@ -1,3 +1,5 @@
+
+
 $(document).ready(() => {
     let tit, desc;
     const sPageURL = window.location.search.substring(1);
@@ -9,18 +11,6 @@ $(document).ready(() => {
         dataType: 'json',
         success: function(res) {
             $('#hellouser').html(res.username);
-        },
-        error: function (p) {
-            console.log('error ajax username');
-        },
-    });
-
-    $.ajax({
-        url: '/api/events',
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            $('#textstories').html(res.title);
         },
         error: function (p) {
             console.log('error ajax username');
