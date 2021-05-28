@@ -45,6 +45,9 @@ $(document).ready(() => {
             },
         });
     });
+
+    const alertTweet = $('#alert-tweet');
+    alertTweet.hide();
     $("#sendTweet").click(() => {
         const t = $("#tweetBox").val();
         $.ajax({
@@ -54,6 +57,12 @@ $(document).ready(() => {
             contentType: "application/json",
             data: JSON.stringify({ tweet: t }),
             success: function (data) {
+                if(t!=""){
+                    alertTweet.show();
+                    setTimeout(function() {
+                        alertTweet.hide();
+                    }, 4000);
+                }
                 $("#tweetBox").val("");
             },
             error: function (err) {
@@ -80,16 +89,6 @@ $(document).ready(() => {
             if ($("#messageBox").is(":focus")) $("#send").click();
             if ($("#tweetBox").is(":focus")) $("#sendTweet").click();
         }
-    });
-
-    
-    const alertTweet = $('#alert-tweet');
-    alertTweet.hide();
-    $('#sendTweet').on('click', function() {
-        alertTweet.show();
-        setTimeout(function() {
-            alertTweet.hide();
-        }, 4000);
     });
 
 });
