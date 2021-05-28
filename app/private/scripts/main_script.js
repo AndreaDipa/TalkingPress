@@ -81,4 +81,13 @@ $(document).ready(() => {
     });
 
     
+    const alertTweet = $('#alert-tweet');
+    alertTweet.hide();
+    $('#sendTweet').on('click', function() {
+        alertTweet.show();
+        setTimeout(function() {
+            alertTweet.hide();
+        }, 4000);
+    });
+
 });
