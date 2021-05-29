@@ -14,6 +14,10 @@ hr{
     margin-bottom: 30px
 }
 
+a {
+    text-decoration: none;
+}
+
 #mynav {
     background-color: #6B0F1A;
     width: 100%;
@@ -23,7 +27,7 @@ hr{
     margin-left: auto;
 }
 
-#tp {
+#titolo {
     color: white;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
@@ -31,6 +35,10 @@ hr{
     font-size: xx-large;
     text-decoration: none;
     white-space: nowrap;
+}
+
+.tit{
+    margin-top: 50px;
 }
 
 #hello-body, #chat, #stories-body {
@@ -67,12 +75,35 @@ hr{
     font-family: 'Rubik', sans-serif;
 }
 
-li {
+/*#stories {
+    margin: 0px;
+}
+
+#stories-ul {
     border-width: 0px;
     margin-bottom: 10px;
+}
+
+#stories-list {
     box-shadow: 1px 1px 10px 1px #a1a1a1;
     border-radius: 10px;
     padding: 20px;
+}*/
+
+.card-title{
+    color: #6B0F1A;
+}
+
+#card-1{
+    border-radius: 12px;
+    margin: 50px;
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+#card-1:hover{
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
 }
 
 #footer-cont{
@@ -86,4 +117,23 @@ li {
 
 .fa-github:hover{
     color: rgb(53, 53, 53);
+}
+
+@media screen and (max-width: 600px) {
+    #titolo{
+        font-size: larger;
+    }
+
+    .tit{
+        margin-top: 30px;
+    }
+
+    #footer-cont{
+        margin-bottom: 0px;
+        padding: 20px;
+    }
+
+    #card-1{
+        margin: 30px;
+    }
 }
