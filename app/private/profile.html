@@ -33,16 +33,21 @@
     </div>
 
     <div class="container-lg" id="chat">
-        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to chat</button>
+        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>
         <hr style="clear: both;">
     </div>
     
     <!--CONTENT-->    
     
-    <div class="row" id="stories-body">
-        <h3 style="text-align: center;">Read again some stories you have saved!</h3>
-    </div>     
-      
+    <div class="container-lg" id="stories-body">
+        <h2 style="text-align: center;">Read again some stories you have saved!</h2>
+        <div id="stories" class="col align-self-center">
+            <div>
+                <ul id="stories-ul" v-for="x in stories" class="list-group list-group-flush"></ul>
+            </div>
+        </div>
+    </div>
+
     <!--FOOTER-->
 
     <div class="container-lg">
