@@ -26,7 +26,7 @@ const app = Vue.createApp({
                     var event = myEvents[i];
                     var li = document.createElement('li');
 
-                    li.setAttribute('class', "list-group-item col-6");
+                    li.setAttribute('class', "list-group-item col-12 col-md-6");
 
                     var div1 = li.appendChild(document.createElement('div'));
                     var h3 = div1.appendChild(document.createElement('h3'));
@@ -55,7 +55,7 @@ const app = Vue.createApp({
     },
 });
 
-app.mount("#stories-vue");
+app.mount("#stories");
 
 $(document).ready(() => {
     const sPageURL = window.location.search.substring(1);

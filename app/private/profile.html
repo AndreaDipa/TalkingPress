@@ -41,50 +41,9 @@
     
     <div class="container-lg" id="stories-body">
         <h2 style="text-align: center;">Read again some stories you have saved!</h2>
-        <div class="col align-self-center">
-            <div id="stories">
-                <div id="stories-vue">
-                    <ul id="stories-ul" v-for="x in stories" class="list-group list-group-flush">
-
-                        <!--
-
-                        <li id="stories-list" class="list-group-item col-6">
-                            <div>
-                                <h1>{{ x.title }}</h1>
-                                <h6>{{ x.description }}</h6>
-                            </div>
-                            <hr>
-                            <div>
-                                <h5>{{ x.comment }}</h5>
-                            </div>
-                        </li>
-                        <li id="stories-list" class="list-group-item col-6">                            <div class="stories-card">
-                            <div>
-                                <h1>Test2</h1>
-                                <h5>Test2</h5>
-                            </div>
-                            <hr>
-                            <div>
-                                Comment2
-                            </div>
-                        </li>
-                        <li id="stories-list" class="list-group-item col-6">
-                            <div class="stories-card">
-                                <div>
-                                    <h1>Test3</h1>
-                                    <h5>Test3</h5>
-                                </div>
-                                <hr>
-                                <div>
-                                    Comment3
-                                </div>
-                            </div>
-                        </li>
-
-                        -->
-
-                    </ul>
-                </div>
+        <div id="stories" class="col align-self-center">
+            <div>
+                <ul id="stories-ul" v-for="x in stories" class="list-group list-group-flush"></ul>
             </div>
         </div>
     </div>
