@@ -33,31 +33,32 @@
     </div>
 
     <div class="container-lg" id="chat">
-        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to chat</button>
+        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>
         <hr style="clear: both;">
     </div>
     
     <!--CONTENT-->    
     
     <div class="container-lg" id="stories-body">
-        <h3 style="text-align: center;">Read again some stories you have saved!</h3>
-        <div class="align-self-center">
+        <h2 style="text-align: center;">Read again some stories you have saved!</h2>
+        <div class="col align-self-center">
             <div id="stories">
-                <ul class="list-group list-group-flush">
-                    <li id="stories-list" class="list-group-item col-4">
-                        <div class="stories-card">
+                <div id="stories-vue">
+                    <ul id="stories-ul" v-for="x in stories" class="list-group list-group-flush">
+
+                        <!--
+
+                        <li id="stories-list" class="list-group-item col-6">
                             <div>
-                                <h1>Test1</h1>
-                                <h5>Test1</h5>
+                                <h1>{{ x.title }}</h1>
+                                <h6>{{ x.description }}</h6>
                             </div>
                             <hr>
                             <div>
-                                Comment1
+                                <h5>{{ x.comment }}</h5>
                             </div>
-                        </div>
-                    </li>
-                    <li id="stories-list" class="list-group-item col-4">
-                        <div class="stories-card">
+                        </li>
+                        <li id="stories-list" class="list-group-item col-6">                            <div class="stories-card">
                             <div>
                                 <h1>Test2</h1>
                                 <h5>Test2</h5>
@@ -66,21 +67,24 @@
                             <div>
                                 Comment2
                             </div>
-                        </div>
-                    </li>
-                    <li id="stories-list" class="list-group-item col-4">
-                        <div class="stories-card">
-                            <div>
-                                <h1>Test3</h1>
-                                <h5>Test3</h5>
+                        </li>
+                        <li id="stories-list" class="list-group-item col-6">
+                            <div class="stories-card">
+                                <div>
+                                    <h1>Test3</h1>
+                                    <h5>Test3</h5>
+                                </div>
+                                <hr>
+                                <div>
+                                    Comment3
+                                </div>
                             </div>
-                            <hr>
-                            <div>
-                                Comment3
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+
+                        -->
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

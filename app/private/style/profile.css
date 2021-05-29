@@ -67,16 +67,9 @@ hr{
     font-family: 'Rubik', sans-serif;
 }
 
-#stories {
-    margin: 0px;
-}
-
-#stories-list {
+li {
     border-width: 0px;
     margin-bottom: 10px;
-}
-
-.stories-card {
     box-shadow: 1px 1px 10px 1px #a1a1a1;
     border-radius: 10px;
     padding: 20px;
