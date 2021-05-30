@@ -33,36 +33,12 @@
     </div>
 
     <div class="container-lg" id="chat">
-        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>
+        <!--<button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>-->
+        <button onclick="window.history.back()" id="chatbutton">Go to previous page</button>
         <hr style="clear: both;">
     </div>
-    
-    <!--CONTENT-->    
-    
-    <!--<div class="container-lg" id="stories-body">
-        <div class="row">
-            <h2 style="text-align: center;">Read again some stories you have saved!</h2>
-        </div>
-        
-        <div>
-            <div id="stories">
-                <div id="stories-vue">
-                    <ul id="stories-ul" v-for="x in stories">
-                        <li id="card-1" class="card">
-                            <div class="card-body">
-                                <h1 class="card-title">{{ x.title }}</h1>
-                                <h6>{{ x.description }}</h6>
-                            </div>
-                            <hr>
-                            <div>
-                                <h5>{{ x.comment }}</h5>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>-->
+
+    <!--CONTENT-->
 
     <div class="container-lg">
         <div id="cont-tit" class="row">
@@ -82,6 +58,10 @@
                         <hr>
                         <div class="card-body">
                             <h5>{{ x.comment }}</h5>
+                            <div>
+                                <button id="deletebutton">Delete</button>
+                                <button id="editbutton">Edit</button>
+                            </div>
                         </div>
                     </li>
                 </ul>

@@ -52,14 +52,13 @@ a {
 
 #logoutbutton {
     background-color: #ddc912;
-    border-radius: 12px;
+    border-radius: 10px;
     border-style: hidden;
     padding: 3px 12px;
     color: #6B0F1A;
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 20px;
-    font-family: 'Rubik', sans-serif;
 }
 
 #chatbutton {
@@ -69,26 +68,40 @@ a {
     padding: 12px 40px;
     color: white;
     font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     float: right;
-    font-family: 'Rubik', sans-serif;
 }
 
-/*#stories {
-    margin: 0px;
+#editbutton {
+    background-color: #ddc912;
+    border-radius: 6px;
+    border-style: hidden;
+    padding: 2px 6px;
+    color: #6B0F1A;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: right;
 }
 
-#stories-ul {
-    border-width: 0px;
-    margin-bottom: 10px;
+#deletebutton {
+    background-color: #6B0F1A;
+    border-radius: 6px;
+    border-style: hidden;
+    padding: 2px 6px;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    float: right;
 }
-
-#stories-list {
-    box-shadow: 1px 1px 10px 1px #a1a1a1;
-    border-radius: 10px;
-    padding: 20px;
-}*/
 
 .card-title{
     color: #6B0F1A;
