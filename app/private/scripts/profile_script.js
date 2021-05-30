@@ -27,23 +27,7 @@ const app = Vue.createApp({
 
 
                 //generate news cards
-                var myEvents = res.events;
-                self.stories = myEvents;
-
-                
-
-                var event;
-
-                for (i = 0; i < myEvents.length; i++) {
-                    event = myEvents[i];
-
-                    self._id = event._id;
-                    
-                    self.title = event.title;
-                    self.description = event.description;
-
-                    self.comment = event.comment;
-                }
+                self.stories = res.events;
             },
             
             error: function(err) {

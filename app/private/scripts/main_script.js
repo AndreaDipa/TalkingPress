@@ -86,11 +86,10 @@ $(document).ready(() => {
     });
     let user;
     $.ajax({
-        url: "/api/users/me",
+        url: "/api/users/username",
         type: "GET",
-        dataType: "json",
         success: function (res) {
-            user = res.username;
+            user = res;
             $("#navbarDropdownMenuLink").html(user);
         },
         error: function (p) {

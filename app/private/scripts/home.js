@@ -61,11 +61,10 @@ app.mount("#cardcat");
 
 $(document).ready(() => {
     $.ajax({
-        url: "/api/users/me",
+        url: "/api/users/username",
         type: "GET",
-        dataType: "json",
         success: function (res) {
-            $("#navbarDropdownMenuLink").html(res.username);
+            $("#navbarDropdownMenuLink").html(res);
         },
         error: function (p) {
             console.log("error ajax username");

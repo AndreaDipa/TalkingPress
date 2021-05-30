@@ -12,6 +12,15 @@ const auth = require("../middleware/auth");
 //ROUTER
 const router = express.Router();
 //PROFILO (si potrebbe creare anche route a parte)
+router.get("/username", auth, async (req, res) => {
+    let user = await User.findById(req.user._id).select("-password");
+    if (!user) {
+        user = await Twitter_User.findById(req.user._id)
+            .select("-tokenSecret")
+            .select("-token");
+    }
+    res.send(user.username);
+});
 router.get("/me", auth, async (req, res) => {
     let user = await User.findById(req.user._id).select("-password");
     if (!user) {
