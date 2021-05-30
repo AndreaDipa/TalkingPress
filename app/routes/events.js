@@ -94,6 +94,7 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 router.put("/:id", auth, async (req, res) => {
+    console.log(req.body.comment);
     let user = await User.findOneAndUpdate(
         { _id: req.user._id, "events._id": req.params.id },
         {
