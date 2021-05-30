@@ -1,7 +1,7 @@
 <h1> Progetto RDC - TalkingPress </h1>
 <h2>Schema provvisorio</h2>
 
-![TalkingPress](https://user-images.githubusercontent.com/57904745/116112103-8bd2b500-a6b7-11eb-97df-9f12b24fe18a.png)
+![mockup](https://user-images.githubusercontent.com/57904745/120097198-7ece3900-c12f-11eb-9f18-25758cb45075.png)
 
 
 <p>
