@@ -121,10 +121,8 @@ router.get("/tweets/:topic", auth, async (req, res) => {
         const u = await User.findById(req.user._id);
         if (u) return res.status(401).end();
     }
-    console.log( config.get('AES_secret'));
     let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
     const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
-    console.log( tok_originalText);
     bytes = CryptoJs.AES.decrypt(user.tokenSecret, config.get('AES_secret'));
     const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
 

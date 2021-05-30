@@ -28,7 +28,6 @@ $(document).ready(() => {
         $.ajax({
             url: "/api/events",
             type: "POST",
-            dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
                 _id: id,
@@ -45,7 +44,7 @@ $(document).ready(() => {
                     alert('news already saved');
                     $("#comment").val("");
                 }
-                console.log("error ajax");
+                console.log("error ajax " + err.status);
             },
         });
     });
