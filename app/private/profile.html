@@ -19,7 +19,7 @@
 
     <nav class="navbar navbar-light" id="mynav">
         <div class="container-lg">
-            <a class="navbar-brand" id="tp" href="../../home.html" >Talking Press</a>
+            <a class="navbar-brand" id="titolo" href="../../home.html" >Talking Press</a>
 
             <button onclick="window.location.href='/logout'" id="logoutbutton">Log Out</button>
         </div>
@@ -33,17 +33,38 @@
     </div>
 
     <div class="container-lg" id="chat">
-        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>
+        <!--<button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>-->
+        <button onclick="window.history.back()" id="chatbutton">Go to previous page</button>
         <hr style="clear: both;">
     </div>
-    
-    <!--CONTENT-->    
-    
-    <div class="container-lg" id="stories-body">
-        <h2 style="text-align: center;">Read again some stories you have saved!</h2>
-        <div id="stories" class="col align-self-center">
-            <div>
-                <ul id="stories-ul" v-for="x in stories" class="list-group list-group-flush"></ul>
+
+    <!--CONTENT-->
+
+    <div class="container-lg">
+        <div id="cont-tit" class="row">
+            <div class="col text-center">
+                <h3 class="tit">Read again some stories you have saved!</h3>
+            </div>
+        </div>   
+
+        <div id="stories">
+            <div class="row">
+                <ul class="col-12 col-md-6" v-for="x in stories">
+                    <li id="card-1" class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ x.title }}</h3>
+                            <h6>{{ x.description }}</h6>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <h5>{{ x.comment }}</h5>
+                            <div>
+                                <button id="deletebutton">Delete</button>
+                                <button id="editbutton">Edit</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
