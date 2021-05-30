@@ -14,6 +14,9 @@ services:
         environment: 
             - tp_jwtPrivateKey=mySecureKey
             - tp_newsKey=yb5LR596klIbnSZuhR1DYXst7gDX64Vv7Rr33ubR
+            - tp_aesSecret=Secret 123!!!
+            - tp_cons_key=F8Rb3OmQlwfwDsMGmicRKWvlw
+            - tp_sec_key=nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri
     nginx:
         restart: always
         build:
