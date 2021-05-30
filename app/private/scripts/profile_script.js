@@ -43,11 +43,6 @@ const app = Vue.createApp({
                     self.description = event.description;
 
                     self.comment = event.comment;
-
-                    if(myEvents.length != 0) {
-                        $("#nothing").hide();
-                    }
-
                 }
             },
             
