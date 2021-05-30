@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    let tit, desc, id;;
+    let tit, desc, id;
     const sPageURL = window.location.search.substring(1);
     const cat = sPageURL.split("=")[1];
     $.ajax({
@@ -24,6 +24,8 @@ $(document).ready(() => {
         },
     });
 
+    const alertNews = $('#alert-news');
+    alertNews.hide();
     $("#salva").click(() => {
         $.ajax({
             url: "/api/events",
@@ -38,10 +40,19 @@ $(document).ready(() => {
             success: function (data) {
                 console.log("sended");
                 $("#comment").val("");
+                alertNews.show();
+                setTimeout(function() {
+                    alertNews.hide();
+                }, 3000);
             },
             error: function (err) {
                 if (err.status == 409) {
-                    alert('news already saved');
+                    alertNews.html('News already sent!');
+                    alertNews.addClass('alert-danger');
+                    alertNews.show();
+                    setTimeout(function() {
+                        alertNews.hide();
+                    }, 4000);
                     $("#comment").val("");
                 }
                 console.log("error ajax " + err.status);

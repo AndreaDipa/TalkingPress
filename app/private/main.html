@@ -23,24 +23,6 @@
         <div class="container-lg">
             <a id="tit-nav" class="navbar-brand" href="./home.html">Talking Press</a>
 
-            <!--
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link2</a>
-                    </li>
-                </ul>
-            </div>
-            -->
-
             <div class="dropdown">
                 <a class="bottone-nav dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Username
@@ -61,6 +43,10 @@
                 <h1 id="titolo"></h1>
                 <p id="descrizione"></p>
                 <button id="save" data-bs-toggle="modal" data-bs-target="#my-modal">Save</button>
+
+                <div id="alert-news" class="alert alert-primary" role="alert">
+                    News sended! Check it on your profile.
+                </div>
 
                 <!-- MODAL -->
                 <div id="my-modal" class="modal fade" tabindex="-1" aria-labelledby="provaLabel" aria-hidden="true">
@@ -170,7 +156,7 @@
 
     <!-- FOOTER -->
 
-    <div class="container-lg">
+    <div id="footer" class="container-lg">
         <hr>
         <div class="row" id="footer-cont">
             <div class="col">
