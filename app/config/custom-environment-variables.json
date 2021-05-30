@@ -1,4 +1,7 @@
 {
     "jwtPrivateKey": "tp_jwtPrivateKey",
-    "newsKey": "tp_newsKey"
+    "newsKey": "tp_newsKey",
+    "AES_secret": "tp_aesSecret",
+    "cons_key": "tp_cons_key",
+    "sec_key": "tp_sec_key"
 }

@@ -8,7 +8,7 @@ const { User } = require("../models/user");
 const Twit = require("twit");
 const CryptoJs = require("crypto-js");
 const auth = require("../middleware/auth");
-
+const config = require("config");
 const path = require("path");
 
 passport.serializeUser(function (user, done) {
@@ -21,9 +21,8 @@ passport.deserializeUser(function (user, done) {
 passport.use(
     new TwitterStrategy(
         {
-            consumerKey: "F8Rb3OmQlwfwDsMGmicRKWvlw",
-            consumerSecret:
-                "nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri",
+            consumerKey: config.get('cons_key'),
+            consumerSecret: config.get('sec_key'),
             callbackURL: "http://localhost/twitter/return",
         },
         async function (accessToken, refreshToken, profile, done) {
@@ -39,11 +38,11 @@ passport.use(
 
             user.token = CryptoJs.AES.encrypt(
                 user.token,
-                "secret 123"
+                config.get('AES_secret')
             ).toString();
             user.tokenSecret = CryptoJs.AES.encrypt(
                 user.tokenSecret,
-                "secret 123"
+                config.get('AES_secret')
             ).toString();
 
             await user.save();
@@ -80,14 +79,15 @@ router.get("/tweets", auth, async (req, res) => {
         const u = await User.findById(req.user._id);
         if (u) return res.status(401).send("no logged :(");
     }
-    let bytes = CryptoJs.AES.decrypt(user.token, "secret 123");
+    
+    let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
     const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
-    bytes = CryptoJs.AES.decrypt(user.tokenSecret, "secret 123");
+    bytes = CryptoJs.AES.decrypt(user.tokenSecret, config.get('AES_secret'));
     const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
 
     var T = new Twit({
-        consumer_key: "F8Rb3OmQlwfwDsMGmicRKWvlw",
-        consumer_secret: "nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri",
+        consumer_key: config.get('cons_key'),
+        consumer_secret: config.get('sec_key'),
         access_token: tok_originalText,
         access_token_secret: sec_originalText,
         timeout_ms: 60 * 1000,
@@ -121,14 +121,16 @@ router.get("/tweets/:topic", auth, async (req, res) => {
         const u = await User.findById(req.user._id);
         if (u) return res.status(401).end();
     }
-    let bytes = CryptoJs.AES.decrypt(user.token, "secret 123");
+    console.log( config.get('AES_secret'));
+    let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
     const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
-    bytes = CryptoJs.AES.decrypt(user.tokenSecret, "secret 123");
+    console.log( tok_originalText);
+    bytes = CryptoJs.AES.decrypt(user.tokenSecret, config.get('AES_secret'));
     const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
 
     var T = new Twit({
-        consumer_key: "F8Rb3OmQlwfwDsMGmicRKWvlw",
-        consumer_secret: "nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri",
+        consumer_key: config.get('cons_key'),
+        consumer_secret: config.get('sec_key'),
         access_token: tok_originalText,
         access_token_secret: sec_originalText,
         timeout_ms: 60 * 1000,
@@ -182,9 +184,9 @@ router.get("/tweets/:topic", auth, async (req, res) => {
 
 router.post("/tweets", auth, async (req, res) => {
     const user = await Twitter_User.findById(req.user._id);
-    let bytes = CryptoJs.AES.decrypt(user.token, "secret 123");
+    let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
     const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
-    bytes = CryptoJs.AES.decrypt(user.tokenSecret, "secret 123");
+    bytes = CryptoJs.AES.decrypt(user.tokenSecret, config.get('AES_secret'));
     const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
 
     var T = new Twit({

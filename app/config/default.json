@@ -1,3 +1,7 @@
 {
-    "jwtPrivateKey": ""
+    "jwtPrivateKey": "",
+    "newsKey": "",
+    "AES_secret": "",
+    "cons_key": "",
+    "sec_key": ""
 }
