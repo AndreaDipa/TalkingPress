@@ -12,6 +12,7 @@ const url = `https://api.thenewsapi.com/v1/news/top?api_token=${config.get(
 )}&locale=it,us&limit=1`;
 
 //CRUD
+
 router.get("/", auth, async (req, res) => {
     let data = await fetch(url);
     data = await data.json();
@@ -48,8 +49,16 @@ router.post("/", auth, async (req, res) => {
         description: req.body.description,
         comment: req.body.comment,
     });
+    let user = await User.findById(req.user._id);
+    if (!user) {
+        user = await Twitter_User.findById(req.user._id);
+    }
+    for (let i = 0; i < user.events.length; i++) {
+        if (user.events[i]._id == req.body._id)
+            return res.status(409).end();
+    }
 
-    let user = await User.findByIdAndUpdate(
+    user = await User.findByIdAndUpdate(
         req.user._id,
         { $addToSet: { events: event } },
         { new: true }
@@ -63,8 +72,8 @@ router.post("/", auth, async (req, res) => {
         );
         if (!user) return res.status(404).send("user not found");
     }
-
-    res.send(user);
+    
+    res.status(200).end();
 });
 
 router.delete("/:id", auth, async (req, res) => {
@@ -81,7 +90,7 @@ router.delete("/:id", auth, async (req, res) => {
         );
         if (!user) return res.status(404).send("user or event not found");
     }
-    res.send(user);
+    res.status(200).end();
 });
 
 router.put("/:id", auth, async (req, res) => {
@@ -96,7 +105,7 @@ router.put("/:id", auth, async (req, res) => {
     ).select("-password");
 
     if (!user) {
-        user = await User.findOneAndUpdate(
+        user = await Twitter_User.findOneAndUpdate(
             { _id: req.user._id, "events._id": req.params.id },
             {
                 $set: {
@@ -107,6 +116,11 @@ router.put("/:id", auth, async (req, res) => {
         );
         if (!user) return res.status(404).send("user not found");
     }
-    res.send(user);
+    let event;
+    for (let i = 0; i < user.events.length; i++) {
+        if (user.events[i]._id == req.params.id)
+            event = user.events[i];
+    }
+    res.send(event);
 });
 module.exports = router;

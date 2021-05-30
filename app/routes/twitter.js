@@ -138,8 +138,7 @@ router.get("/tweets/:topic", auth, async (req, res) => {
         "search/tweets",
         {
             q: `${req.params.topic}`,
-            count: 4,
-            locale: "it",
+            count: 5,
             result_type: "popular",
         },
         function (err, data, response) {
@@ -180,6 +179,7 @@ router.get("/tweets/:topic", auth, async (req, res) => {
         }
     );
 });
+
 router.post("/tweets", auth, async (req, res) => {
     const user = await Twitter_User.findById(req.user._id);
     let bytes = CryptoJs.AES.decrypt(user.token, "secret 123");

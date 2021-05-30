@@ -41,6 +41,10 @@ $(document).ready(() => {
                 $("#comment").val("");
             },
             error: function (err) {
+                if (err.status == 409) {
+                    alert('news already saved');
+                    $("#comment").val("");
+                }
                 console.log("error ajax");
             },
         });
