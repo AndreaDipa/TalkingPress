@@ -53,14 +53,35 @@
                     <li id="card-1" class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ x.title }}</h3>
-                            <h6>{{ x.description }}</h6>
+                            <h6 class="card-text">{{ x.description }}</h6>
+                            <a id="link">link</a>
                         </div>
-                        <hr>
-                        <div class="card-body">
-                            <h5>{{ x.comment }}</h5>
+                        <div class="card-footer">
+                            <h5 class="card-text" style="color: grey;">{{ x.comment }}</h5>
                             <div>
                                 <button id="deletebutton">Delete</button>
-                                <button id="editbutton">Edit</button>
+
+                                <button id="editbutton" data-bs-toggle="modal" data-bs-target="#my-modal">Edit</button>
+
+                                <!-- MODAL -->
+                                <div id="my-modal" class="modal fade" tabindex="-1" aria-labelledby="provaLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="provaLabel">Edit your Comment</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <textarea name="comment" id="comment" class="form-control"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button id="salva" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </li>

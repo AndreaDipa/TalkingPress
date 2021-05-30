@@ -3,6 +3,7 @@ const app = Vue.createApp({
         return {
             stories: [
                 {
+                    _id: "ID",
                     title: "Title test",
                     description: "Description test",
                     comment: "Comment test",
@@ -66,5 +67,38 @@ $(document).ready(() => {
         error: function (err) {
             console.log('error ajax username');
         },
+    });
+
+    $("#salva").click(() => {
+        $.ajax({
+            url: "/api/events/" + id,
+            type: "PUT",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                comment: $("#comment").val(),
+            }),
+            success: function (data) {
+                console.log("sended");
+                $("#comment").val("");
+            },
+            error: function (err) {
+                console.log("error ajax");
+            },
+        });
+    });
+
+    $("#deletebutton").click(() => {
+        $.ajax({
+            url: "/api/events/" + id,
+            type: "DELETE",
+            dataType: "json",
+            success: function (data) {
+                console.log("deleted");
+            },
+            error: function (err) {
+                console.log("error ajax");
+            },
+        });
     });
 })

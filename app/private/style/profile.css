@@ -103,6 +103,34 @@ a {
     float: right;
 }
 
+#salva{
+    background-color: #6B0F1A;
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 10px 30px;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+#salva:focus{
+    box-shadow: 0 0 0 .25rem #6b0f1a8a;
+    border-color: #6B0F1A;
+}
+
+#close {
+    border-radius: 12px;
+    border-style: hidden;
+    padding: 10px 40px;
+    
+    color: white;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
 .card-title{
     color: #6B0F1A;
 }
