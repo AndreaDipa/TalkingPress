@@ -22,6 +22,7 @@ const app = Vue.createApp({
             dataType: "json",
             success: function(res) {
                 //generate username
+                $("#navbarDropdownMenuLink").html(res.username);
                 $('#hellouser').html(res.username);
 
 
@@ -29,11 +30,7 @@ const app = Vue.createApp({
                 var myEvents = res.events;
                 self.stories = myEvents;
 
-                /*if(myEvents.length == 0) {
-                    var nothing = document.createElement('h1');
-                    nothing.appendChild(document.createTextNode("Nothing to show"));
-                    nothing.setAttribute('style', "color: gray");
-                }*/
+                
 
                 var event;
 
@@ -44,12 +41,12 @@ const app = Vue.createApp({
                     
                     self.title = event.title;
                     self.description = event.description;
-                    /*if(event.comment == "") {
-                        self.comment = "[NO COMMENT]";
-                    } else {
-                        
-                    }*/
+
                     self.comment = event.comment;
+
+                    if(myEvents.length != 0) {
+                        $("#nothing").hide();
+                    }
 
                 }
             },
@@ -85,8 +82,6 @@ const app = Vue.createApp({
         edit_news(id) {
             var self = this.stories;
 
-            console.log(id);
-
             $.ajax({
                 url: "/api/events/" + id,
                 type: "PUT",
@@ -96,10 +91,7 @@ const app = Vue.createApp({
                 },
 
                 success: function(res) {
-                    //self.comment = data.comment;
-                    console.log(res.comment);
                     for(let i = 0; i < Object.keys(self).length; i++) {
-                        console.log(self[i]);
                         if(self[i]._id == id) {
                             self[i].comment = res.comment;
                             break;
@@ -120,32 +112,3 @@ const app = Vue.createApp({
 });
 
 app.mount("#stories");
-
-/*const app2 = Vue.createApp({
-    data() {
-        return {
-            _id: "User ID",
-        }
-    },
-    created() {
-        var self = this;
-
-        $("#deletebutton").click(() => {
-            $.ajax({
-                url: "/api/users/" + self._id,
-                type: "DELETE",
-                dataType: "json",
-                success: function () {
-                    console.log("deleted account");
-                    window.location.href('./deleted.html');
-                },
-                error: function (err) {
-                    console.log("error ajax");
-                },
-            });
-        });
-    },
-});
-
-app2.mount("#profile-settings");*/
-
