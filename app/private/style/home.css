@@ -62,7 +62,9 @@ a{
 
 hr{
     margin-top: 20px;
-    margin-bottom: 30px
+    margin-bottom: 30px;
+    color: #6B0F1A;
+    opacity: 0.5;
 }
 
 #footer-cont{
