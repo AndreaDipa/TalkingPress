@@ -53,7 +53,7 @@
 
         <div id="stories">
             <div class="row">
-                <ul class="col-12 col-md-6" v-for="x in stories">
+                <ul class="col-12 col-md-6" v-for="x in stories" v-bind:key="x._id">
                     <li id="card-1" class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ x.title }}</h3>
@@ -65,10 +65,10 @@
                             <div>
                                 <button id="deletebutton" v-on:click="delete_news(x._id)" >Delete</button>
 
-                                <button id="editbutton" data-bs-toggle="modal" data-bs-target="#my-modal">Edit</button>
+                                <button id="editbutton" data-bs-toggle="modal" v-bind:data-bs-target="'#my-modal-'+x._id">Edit</button>
 
                                 <!-- MODAL -->
-                                <div id="my-modal" class="modal fade" tabindex="-1" aria-labelledby="provaLabel" aria-hidden="true">
+                                <div v-bind:id="'my-modal-'+x._id" class="modal fade" tabindex="-1" aria-labelledby="provaLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
