@@ -21,7 +21,15 @@
         <div class="container-lg">
             <a class="navbar-brand" id="titolo" href="../../home.html" >Talking Press</a>
 
-            <button onclick="window.location.href='/logout'" id="logoutbutton">Log Out</button>
+            <div class="dropdown">
+                <a class="bottone-nav dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Username
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="./home.html">Home</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -32,34 +40,32 @@
         <a id="hellouser">user</a>    
     </div>
 
-    <!--<div class="container-lg" id="chat">
-        <button onclick="window.location.href='../../home.html'" id="chatbutton">Go back to home page</button>
+    <div class="container-lg" id="chat">
         <button onclick="window.history.back()" id="chatbutton">Go to previous page</button>
-    </div> -->
-
-    <div class="container-lg" id="profile-settings">
-        <button id="delete-account">DELETE ACCOUNT</button>
-        <hr style="clear: both;">
-    </div>
+        <hr style="clear: both">
+    </div> 
 
     <!--CONTENT-->
+    
 
     <div class="container-lg">
         <div id="cont-tit" class="row">
             <div class="col text-center">
                 <h3 class="tit">Read again some stories you have saved!</h3>
             </div>
-        </div>   
+        </div>
 
         <div id="stories">
             <div class="row">
                 <ul class="col-12 col-md-6" v-for="x in stories" v-bind:key="x._id">
+
                     <li id="card-1" class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ x.title }}</h3>
                             <h6 class="card-text">{{ x.description }}</h6>
                     
                         </div>
+                        
                         <div class="card-footer">
                             <h5 class="card-text" style="color: grey;">{{ x.comment }}</h5>
                             <div>

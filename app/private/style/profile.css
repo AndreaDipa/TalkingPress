@@ -37,6 +37,24 @@ a {
     white-space: nowrap;
 }
 
+.bottone-nav{
+    text-decoration: none;
+    font-size:larger;
+    color: white;
+}
+
+.bottone-nav:hover{
+    color: #c7bdbe;
+}
+
+.dropdown-item:hover{
+    background-color: #6b0f1a44;
+}
+
+.dropdown-item:focus{
+    background-color: #6B0F1A;
+}
+
 .tit{
     margin-top: 50px;
 }
@@ -61,7 +79,7 @@ a {
     margin-top: 20px;
 }
 
-#delete-account {
+#chatbutton {
     background-color: #6B0F1A;
     border-radius: 12px;
     border-style: hidden;
