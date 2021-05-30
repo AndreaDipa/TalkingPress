@@ -24,24 +24,63 @@ const app = Vue.createApp({
                 var myEvents = res.events;
                 self.stories = myEvents;
 
-                if(myEvents.length == 0) {
+                /*if(myEvents.length == 0) {
                     var nothing = document.createElement('h1');
                     nothing.appendChild(document.createTextNode("Nothing to show"));
                     nothing.setAttribute('style', "color: gray");
-                }
+                }*/
 
                 var event;
 
                 for (i = 0; i < myEvents.length; i++) {
                     event = myEvents[i];
+
+                    self._id = event._id;
                     
                     self.title = event.title;
                     self.description = event.description;
-                    if(event.comment == "") {
+                    /*if(event.comment == "") {
                         self.comment = "[NO COMMENT]";
                     } else {
-                        self.comment = event.comment;
-                    }
+                        
+                    }*/
+                    self.comment = event.comment;
+
+                    $("#deletebutton").click(() => {
+                        $.ajax({
+                            url: "/api/events/" + self._id,
+                            type: "DELETE",
+                            dataType: "json",
+                            success: function (data) {
+                                console.log("deleted");
+                                window.location.reload();
+                            },
+                            error: function (err) {
+                                console.log("error ajax");
+                            },
+                        });
+                    });
+
+                    $("#salva").click(() => {
+                        $.ajax({
+                            url: "/api/events/" + self._id,
+                            type: "PUT",
+                            dataType: "json",
+                            contentType: "application/json",
+                            data: JSON.stringify({
+                                comment: $("#comment").val(),
+                            }),
+                            success: function (data) {
+                                self.comment = data.comment;
+                                console.log("sended");
+                                $("#comment").val("");
+                                window.location.reload();
+                            },
+                            error: function (err) {
+                                console.log("error ajax");
+                            },
+                        });
+                    });
                 }
             },
             
@@ -67,38 +106,5 @@ $(document).ready(() => {
         error: function (err) {
             console.log('error ajax username');
         },
-    });
-
-    $("#salva").click(() => {
-        $.ajax({
-            url: "/api/events/" + id,
-            type: "PUT",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify({
-                comment: $("#comment").val(),
-            }),
-            success: function (data) {
-                console.log("sended");
-                $("#comment").val("");
-            },
-            error: function (err) {
-                console.log("error ajax");
-            },
-        });
-    });
-
-    $("#deletebutton").click(() => {
-        $.ajax({
-            url: "/api/events/" + id,
-            type: "DELETE",
-            dataType: "json",
-            success: function (data) {
-                console.log("deleted");
-            },
-            error: function (err) {
-                console.log("error ajax");
-            },
-        });
     });
 })

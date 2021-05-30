@@ -54,7 +54,7 @@
                         <div class="card-body">
                             <h3 class="card-title">{{ x.title }}</h3>
                             <h6 class="card-text">{{ x.description }}</h6>
-                            <a id="link">link</a>
+                            <a id="link" v-bind:id="x._id"></a>
                         </div>
                         <div class="card-footer">
                             <h5 class="card-text" style="color: grey;">{{ x.comment }}</h5>
