@@ -155,7 +155,7 @@ a {
 
 #card-1{
     border-radius: 12px;
-    margin: 50px;
+    margin: 6px;
 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -204,9 +204,5 @@ a {
     #footer-cont{
         margin-bottom: 0px;
         padding: 20px;
-    }
-
-    #card-1{
-        margin: 30px;
     }
 }
