@@ -59,7 +59,7 @@
         </div>
 
         <div id="stories">
-            <div class="row">
+            <div v-if="stories.length > 0" class="row">
                 <ul class="col-12 col-md-6" v-for="x in stories">
 
                     <!--CARDS-->
@@ -100,6 +100,13 @@
                     </li>
                 </ul>
             </div>
+
+            <div v-else id="cont-tit" class="row">
+                <div class="col text-center">
+                    <h1 class="tit" style="color: grey;">Nothing to show :/</h1>
+                </div>
+            </div>
+
         </div>
     </div>
 
