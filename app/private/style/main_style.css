@@ -179,16 +179,6 @@ a{
     border-color: #6B0F1A;
 }
 
-#close {
-    border-radius: 12px;
-    border-style: hidden;
-    padding: 10px 40px;
-    
-    color: white;
-    font-size: 20px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
 
 #sendTweet{
     background-color: #1DA1F2;
