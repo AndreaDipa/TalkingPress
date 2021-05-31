@@ -10,8 +10,8 @@ body {
 }
 
 hr{
-    color: #6B0F1A;
-    opacity: 0.5;
+    margin-top: 20px;
+    margin-bottom: 30px
 }
 
 a {
@@ -56,10 +56,10 @@ a {
 }
 
 .tit{
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
-#hello-body, #stories-body {
+#hello-body, #chat, #stories-body {
     margin: auto;
     padding: 10px;
 }
@@ -86,15 +86,11 @@ a {
     padding: 12px 40px;
     color: white;
     font-size: 20px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 5px;
+    margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
     float: right;
-}
-
-#chatbutton:hover{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 }
 
 #editbutton {
@@ -182,23 +178,27 @@ a {
     color: rgb(53, 53, 53);
 }
 
-textarea{
-    height: 250px;
-    resize: none;
-}
-
-.form-control:focus{
-    box-shadow: 0 0 0 .25rem #6b0f1a8a;
-    border-color: #6B0F1A;
-}
-
 @media screen and (max-width: 600px) {
     #titolo{
         font-size: larger;
     }
 
     .tit{
-        margin-top: 10px;
+        margin-top: 30px;
+    }
+
+    #chatbutton {
+        background-color: #6B0F1A;
+        border-radius: 12px;
+        border-style: hidden;
+        padding: 12px 40px;
+        color: white;
+        font-size: 16px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        float: right;
     }
 
     #footer-cont{
@@ -208,11 +208,5 @@ textarea{
 
     #card-1{
         margin: 30px;
-    }
-
-    .modal{
-        padding-top: 60px;
-        padding-left: 40px;
-        padding-right: 40px;
     }
 }
