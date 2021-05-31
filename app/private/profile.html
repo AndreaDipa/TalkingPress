@@ -70,8 +70,16 @@
                         </div>
                         
                         <div class="card-footer">
-                            <h5 class="card-text" style="color: grey;">{{ x.comment }}</h5>
-                            <div>
+                            <div v-if="x.comment !== ''" class="col-md">
+                                <h5 class="card-text" style="color: grey;">{{ x.comment }}</h5>
+                            </div>
+                            <div v-else>
+                                <h6 class="card-text" style="color: grey;">
+                                    <i>No comment, click the edit button to add it!</i>
+                                </h6>
+                            </div>
+                            
+                            <div class="col-md">
                                 <button id="deletebutton" v-on:click="delete_news(x._id)" >Delete</button>
 
                                 <button id="editbutton" data-bs-toggle="modal" v-bind:data-bs-target="'#my-modal-'+x._id">Edit</button>
