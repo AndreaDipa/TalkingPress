@@ -142,6 +142,7 @@ router.get("/tweets/:topic", auth, async (req, res) => {
             result_type: "popular",
         },
         function (err, data, response) {
+            if (err || data.statuses.length < 4) return res.status(404).send('no tweet :/');
             res.send([
                 {
                     text: data.statuses[0].text,

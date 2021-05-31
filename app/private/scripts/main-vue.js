@@ -55,6 +55,15 @@ const app = Vue.createApp({
                     $("#tweetBox").hide();
                     $("#sendTweet").hide();
                 }
+                if (err.status == 404) {
+                    self.tweets = [
+                        {
+                            text: "",
+                            user_name: err.responseText,
+                            user_profile_img: "propic.png",
+                        },
+                    ];
+                }
             },
         });
     },
