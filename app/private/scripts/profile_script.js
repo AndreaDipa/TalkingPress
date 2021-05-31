@@ -24,19 +24,16 @@ const app = Vue.createApp({
                 //generate username
                 $("#navbarDropdownMenuLink").html(res.username);
                 $('#hellouser').html(res.username);
-
-
-                //generate news cards
+                
                 self.stories = res.events;
-            },
-            
+            },  
             error: function(err) {
                 console.log("error ajax with profile data");
             },
         });
     },
-    methods: {
 
+    methods: {
         delete_news(id) {
             var self = this.stories;
 
@@ -74,10 +71,8 @@ const app = Vue.createApp({
                         if(self[i]._id == id) {
                             self[i].comment = res.comment;
                             break;
-                        }
-                        
+                        }  
                     }
-                    
                     console.log("sent");
                     $(`#${id}`).val("");
                 },
@@ -87,7 +82,6 @@ const app = Vue.createApp({
             });
         }
     },
-    
 });
 
 app.mount("#stories");
