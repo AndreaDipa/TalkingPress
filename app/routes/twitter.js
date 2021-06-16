@@ -61,59 +61,13 @@ router.get(
         const user = await Twitter_User.findOne({ twitterId: req.user.id });
         const token = user.generateAuthToken();
 
-        //res.cookie('x-auth-token', token).sendFile('main.html', { root: path.join(__dirname, '../public') });
-        //res.redirect('/twitter/main')
-        res.cookie("x-auth-token", token).redirect(
-            "http://localhost/home.html"
+        res.cookie("x-auth-token", token, {httpOnly: true}).redirect(
+            "/home.html"
         );
     }
 );
 
-router.get("/main_style.css", async (req, res) => {
-    res.sendFile("main_style.css", { root: path.join(__dirname, "../public") });
-});
 
-router.get("/tweets", auth, async (req, res) => {
-    const user = await Twitter_User.findById(req.user._id);
-    if (!user) {
-        const u = await User.findById(req.user._id);
-        if (u) return res.status(401).send("no logged :(");
-    }
-    
-    let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
-    const tok_originalText = bytes.toString(CryptoJs.enc.Utf8);
-    bytes = CryptoJs.AES.decrypt(user.tokenSecret, config.get('AES_secret'));
-    const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
-
-    var T = new Twit({
-        consumer_key: config.get('cons_key'),
-        consumer_secret: config.get('sec_key'),
-        access_token: tok_originalText,
-        access_token_secret: sec_originalText,
-        timeout_ms: 60 * 1000,
-    });
-
-    T.get(
-        "search/tweets",
-        { q: "israel", count: 4, locale: "it", result_type: "popular" },
-        function (err, data, response) {
-            res.send([
-                {
-                    text: data.statuses[0].text,
-                },
-                {
-                    text: data.statuses[1].text,
-                },
-                {
-                    text: data.statuses[2].text,
-                },
-                {
-                    text: data.statuses[3].text,
-                },
-            ]);
-        }
-    );
-});
 
 router.get("/tweets/:topic", auth, async (req, res) => {
     const user = await Twitter_User.findById(req.user._id);

@@ -1,25 +1,59 @@
-version: "3.8"
+version: "3.9"
 services:
     mongoserver:
         image:
             mongo:latest
-        restart: always
         ports:
-            - "27017:27017"
-    nodeserver:
+            - "27017"
+        networks:
+           - app-network
+    nodeserver_1:
         build:
             context: ./app
         ports:
-            - "5000:5000"
-        environment: 
-            - tp_jwtPrivateKey=mySecureKey
-            - tp_newsKey=yb5LR596klIbnSZuhR1DYXst7gDX64Vv7Rr33ubR
-            - tp_aesSecret=Secret 123!!!
-            - tp_cons_key=F8Rb3OmQlwfwDsMGmicRKWvlw
-            - tp_sec_key=nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri
+            - "5000"
+        env_file:
+            - sec.env
+        networks:
+            - app-network
+    nodeserver_2:
+        build:
+            context: ./app
+        ports:
+            - "5000"
+        env_file:
+            - sec.env
+        networks:
+            - app-network
+    nodeserver_3:
+        build:
+            context: ./app
+        ports:
+            - "5000"
+        env_file:
+            - sec.env
+        networks:
+            - app-network
     nginx:
-        restart: always
         build:
             context: ./nginx
+        depends_on: 
+            - nodeserver_1
+            - nodeserver_2
+            - nodeserver_3
+
         ports:
-            - "80:80"
+            - 80:80
+            - 443:443
+        networks:
+            - app-network
+    ws:
+        build:
+            context: ./ws
+        ports:
+            - "6000"
+        networks:
+            - app-network
+networks:
+    app-network:
+        driver: bridge

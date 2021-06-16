@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Talking Press - Login</title>
+        <script src="./assets/lib/jquery-3.6.0.min.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="./assets/lib/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css"
+        />
+        <script src="./assets/lib/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+
+        <script src="./scripts/login.js"></script>
+        <link rel="stylesheet" href="./style/login.css" />
+    </head>
+    <body>
+        <form id="form" method="POST" action="/api/auth" class="back-container">
+            <div id="Card1" class="container text-center">
+                <h2 class="pt-4">Login</h2>
+                <div class="pt-4">
+                    <div class="mb-3">
+                        <p id="invalid" style="color: red"></p>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="E-mail"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="bottone-2">Sign In</button>
+                </div>
+                <p>or</p>
+                <div class="mb-3">
+                    <a href="/twitter/login"
+                        ><button type="button" class="bottone-twitter">
+                            Login with Twitter
+                        </button></a
+                    >
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

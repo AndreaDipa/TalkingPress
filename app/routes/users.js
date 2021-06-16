@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
     await user.save();
 
     const token = user.generateAuthToken();
-    res.cookie("x-auth-token", token).end();
+    res.cookie("x-auth-token", token, {httpOnly: true}).end();
 });
 
 module.exports = router;

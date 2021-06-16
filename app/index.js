@@ -12,7 +12,6 @@ const users = require("./routes/users");
 const auth = require("./routes/auth");
 
 const auths = require("./middleware/auth");
-const chat = require("./routes/chat");
 
 const events = require("./routes/events");
 const bodyParser = require("body-parser");
@@ -25,6 +24,10 @@ const expressWs = require("express-ws")(app);
 const PORT = process.env.PORT || 5000;
 
 //CONTROLLO SECRET KEY PER HASH
+if (!config.get("AES_secret")) {
+    console.log("FATAL ERROR AES PRIVATE KEY IS NOT DEFINE");
+    process.exit(1);
+}
 if (!config.get("jwtPrivateKey")) {
     console.log("FATAL ERROR JWT PRIVATE KEY IS NOT DEFINE");
     process.exit(1);
@@ -40,22 +43,17 @@ mongoose
     })
     .then(console.log("connected to TalkingPress db"))
     .catch((err) => console.log("cant connect to mongo: " + err.message));
-
 app.use(
     session({
         secret: "twitter-auth-session",
         resave: true,
         saveUninitialized: true,
-        cookie: {
-            secure: "auto",
-            sameSite: "Lax",
-        },
+        secure: true,     
     })
 );
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -63,7 +61,6 @@ app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/api/events", events);
 app.use("/twitter", twitter);
-app.use("/chat", chat);
 app.use(auths, express.static(path.join(__dirname, "private")));
 
 app.get("/logout", auths, (req, res) => {

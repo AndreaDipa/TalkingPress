@@ -60,6 +60,7 @@ const app = Vue.createApp({
 app.mount("#cardcat");
 
 $(document).ready(() => {
+
     $.ajax({
         url: "/api/users/username",
         type: "GET",
