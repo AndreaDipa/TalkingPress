@@ -4,7 +4,6 @@ const config = require("config");
 function auth(req, res, next) {
     const token = req.cookies["x-auth-token"];
     if (!token) return res.status(401).redirect("/login.html");
-
     try {
         const decoded = jwt.verify(token, config.get("jwtPrivateKey"));
         req.user = decoded;

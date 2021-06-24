@@ -10,6 +10,7 @@ const passport = require("passport");
 const twitter = require("./routes/twitter");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
+const chat = require("./routes/chat");
 
 const auths = require("./middleware/auth");
 
@@ -61,8 +62,15 @@ app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/api/events", events);
 app.use("/twitter", twitter);
-app.use(auths, express.static(path.join(__dirname, "private")));
+app.use("/chat", chat);
 
+app.use(auths, express.static(path.join(__dirname, "private")));
+/**
+ * @api {get} /logout Logout user
+ * @apiName LogoutUser
+ * @apigroup Authorization
+ * @apiDescription delete user's cookie, logout user 
+ */
 app.get("/logout", auths, (req, res) => {
     res.clearCookie("x-auth-token").redirect("/index.html");
 });

@@ -1,0 +1,354 @@
+[
+  {
+    "type": "post",
+    "url": "/api/auth",
+    "title": "Login user",
+    "name": "LoginUser",
+    "group": "Authorization",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "email",
+        "description": "<p>user's email</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "password",
+        "description": "<p>user's password</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "cookie",
+            "optional": false,
+            "field": "x-auth-token",
+            "description": "<p>http only cookie with authorization token</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/auth.js",
+    "groupTitle": "Authorization"
+  },
+  {
+    "type": "get",
+    "url": "/logout",
+    "title": "Logout user",
+    "name": "LogoutUser",
+    "group": "Authorization",
+    "description": "<p>delete user's cookie, logout user</p>",
+    "version": "0.0.0",
+    "filename": "app/index.js",
+    "groupTitle": "Authorization"
+  },
+  {
+    "type": "delete",
+    "url": "/api/events/:id",
+    "title": "Delete event for the current user",
+    "name": "DeleteEvent",
+    "group": "Events",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>event's id</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/events.js",
+    "groupTitle": "Events"
+  },
+  {
+    "type": "get",
+    "url": "/api/events",
+    "title": "Request generic event",
+    "name": "GetEvent",
+    "group": "Events",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "event",
+            "description": "<p>generic event from TheNewsApi</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/events.js",
+    "groupTitle": "Events"
+  },
+  {
+    "type": "get",
+    "url": "/api/events/:cat",
+    "title": "Event request of category cat",
+    "name": "GetEventCat",
+    "group": "Events",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "event",
+            "description": "<p>event of category cat from TheNewsApi</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/events.js",
+    "groupTitle": "Events"
+  },
+  {
+    "type": "post",
+    "url": "/api/events",
+    "title": "Save event for the current user",
+    "name": "PostEvent",
+    "group": "Events",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "_id",
+        "description": "<p>event's id</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "title",
+        "description": "<p>event's title</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "description",
+        "description": "<p>event's description</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "comment",
+        "description": "<p>optional comment of the user</p>"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "app/routes/events.js",
+    "groupTitle": "Events"
+  },
+  {
+    "type": "put",
+    "url": "/api/events/:id",
+    "title": "Modify event for the current user",
+    "name": "PutEvent",
+    "group": "Events",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>event's id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "event",
+            "description": "<p>event modified</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/events.js",
+    "groupTitle": "Events"
+  },
+  {
+    "type": "get",
+    "url": "/twitter/tweets/:topic",
+    "title": "Request tweets of the topic",
+    "name": "GetTweets",
+    "group": "Twitter",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "[json]",
+            "optional": false,
+            "field": "tweets",
+            "description": "<p>top tweets of the topic</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/twitter.js",
+    "groupTitle": "Twitter"
+  },
+  {
+    "type": "get",
+    "url": "/twitter/login",
+    "title": "Request login with twitter",
+    "name": "LoginTwitter",
+    "group": "Twitter",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "cookie",
+            "optional": false,
+            "field": "x-auth-token",
+            "description": "<p>http only cookie with authorization token</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/twitter.js",
+    "groupTitle": "Twitter"
+  },
+  {
+    "type": "post",
+    "url": "/twitter/tweets/",
+    "title": "Post tweet on twitter",
+    "name": "PostTweet",
+    "group": "Twitter",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "tweet",
+        "description": "<p>tweet to post on twitter</p>"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "app/routes/twitter.js",
+    "groupTitle": "Twitter"
+  },
+  {
+    "type": "get",
+    "url": "/api/users/me",
+    "title": "Request current user's profile",
+    "name": "GetProfile",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "user",
+            "description": "<p>current user's profile</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/users.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "get",
+    "url": "/api/users/username",
+    "title": "Request current user's username",
+    "name": "GetUsername",
+    "group": "Users",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>current user's username</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/users.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "post",
+    "url": "/api/users",
+    "title": "Register user",
+    "name": "RegisterUser",
+    "group": "Users",
+    "body": [
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "username",
+        "description": "<p>user's username</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "email",
+        "description": "<p>user's email</p>"
+      },
+      {
+        "group": "Body",
+        "type": "String",
+        "optional": false,
+        "field": "password",
+        "description": "<p>user's password</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "cookie",
+            "optional": false,
+            "field": "x-auth-token",
+            "description": "<p>http only cookie with authorization token</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "app/routes/users.js",
+    "groupTitle": "Users"
+  }
+]

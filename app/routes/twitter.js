@@ -23,7 +23,7 @@ passport.use(
         {
             consumerKey: config.get('cons_key'),
             consumerSecret: config.get('sec_key'),
-            callbackURL: "http://localhost/twitter/return",
+            callbackURL: "/twitter/return",
         },
         async function (accessToken, refreshToken, profile, done) {
             let user = await Twitter_User.findOne({ twitterId: profile.id });
@@ -51,7 +51,13 @@ passport.use(
         }
     )
 );
-
+/**
+ * @api {get} /twitter/login Request login with twitter
+ * @apiName LoginTwitter
+ * @apigroup Twitter
+ * 
+ * @apiSuccess {cookie} x-auth-token http only cookie with authorization token
+ */
 router.get("/login", passport.authenticate("twitter"));
 
 router.get(
@@ -67,7 +73,13 @@ router.get(
     }
 );
 
-
+/**
+ * @api {get} /twitter/tweets/:topic Request tweets of the topic
+ * @apiName GetTweets
+ * @apigroup Twitter
+ * 
+ * @apiSuccess {[json]} tweets top tweets of the topic
+ */
 
 router.get("/tweets/:topic", auth, async (req, res) => {
     const user = await Twitter_User.findById(req.user._id);
@@ -135,6 +147,12 @@ router.get("/tweets/:topic", auth, async (req, res) => {
     );
 });
 
+/**
+ * @api {post} /twitter/tweets/ Post tweet on twitter
+ * @apiName PostTweet
+ * @apigroup Twitter
+ * @apiBody {String} tweet tweet to post on twitter
+ */
 router.post("/tweets", auth, async (req, res) => {
     const user = await Twitter_User.findById(req.user._id);
     let bytes = CryptoJs.AES.decrypt(user.token, config.get('AES_secret'));
@@ -143,8 +161,8 @@ router.post("/tweets", auth, async (req, res) => {
     const sec_originalText = bytes.toString(CryptoJs.enc.Utf8);
 
     var T = new Twit({
-        consumer_key: "F8Rb3OmQlwfwDsMGmicRKWvlw",
-        consumer_secret: "nLCmsuy0dM2GIBXbBtV2EdXm8ebnw6YZf7Gwg1ep72eIcAgBri",
+        consumer_key: config.get('cons_key'),
+        consumer_secret: config.get('sec_key'),
         access_token: tok_originalText,
         access_token_secret: sec_originalText,
         timeout_ms: 60 * 1000,
@@ -153,7 +171,7 @@ router.post("/tweets", auth, async (req, res) => {
         "statuses/update",
         { status: `${req.body.tweet}` },
         function (err, data, response) {
-            res.status(200).send(data);
+            res.status(200).end();
         }
     );
 });

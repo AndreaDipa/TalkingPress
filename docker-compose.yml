@@ -1,5 +1,10 @@
 version: "3.9"
 services:
+    rabbit:
+        image: 
+            rabbitmq:3
+        networks:
+            - app-network
     mongoserver:
         image:
             mongo:latest
@@ -14,8 +19,13 @@ services:
             - "5000"
         env_file:
             - sec.env
+        environment: 
+            - number=1
         networks:
             - app-network
+        depends_on: 
+            - rabbit
+        restart: on-failure
     nodeserver_2:
         build:
             context: ./app
@@ -23,8 +33,13 @@ services:
             - "5000"
         env_file:
             - sec.env
+        environment: 
+            - number=2
         networks:
             - app-network
+        depends_on: 
+            - rabbit
+        restart: on-failure
     nodeserver_3:
         build:
             context: ./app
@@ -32,8 +47,13 @@ services:
             - "5000"
         env_file:
             - sec.env
+        environment: 
+            - number=3
         networks:
             - app-network
+        depends_on: 
+            - rabbit
+        restart: on-failure
     nginx:
         build:
             context: ./nginx
@@ -47,13 +67,15 @@ services:
             - 443:443
         networks:
             - app-network
-    ws:
-        build:
-            context: ./ws
-        ports:
-            - "6000"
-        networks:
-            - app-network
+        restart: on-failure
+
+  #  ws:
+  #       build:
+    #         context: ./ws
+     #   ports:
+      #      - "6000"
+      #  networks:
+       #     - app-network
 networks:
     app-network:
         driver: bridge

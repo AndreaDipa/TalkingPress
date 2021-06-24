@@ -11,7 +11,13 @@ const auth = require("../middleware/auth");
 
 //ROUTER
 const router = express.Router();
-//PROFILO (si potrebbe creare anche route a parte)
+/**
+ * @api {get} /api/users/username Request current user's username
+ * @apiName GetUsername
+ * @apigroup Users
+ * 
+ * @apiSuccess {String} username current user's username
+ */
 router.get("/username", auth, async (req, res) => {
     let user = await User.findById(req.user._id).select("-password");
     if (!user) {
@@ -21,6 +27,13 @@ router.get("/username", auth, async (req, res) => {
     }
     res.send(user.username);
 });
+/**
+ * @api {get} /api/users/me Request current user's profile
+ * @apiName GetProfile
+ * @apigroup Users
+ * 
+ * @apiSuccess {json} user current user's profile
+ */
 router.get("/me", auth, async (req, res) => {
     let user = await User.findById(req.user._id).select("-password");
     if (!user) {
@@ -31,6 +44,15 @@ router.get("/me", auth, async (req, res) => {
     res.json(user);
 });
 //REGISTER
+/**
+ * @api {post} /api/users Register user
+ * @apiName RegisterUser
+ * @apigroup Users
+ * @apiBody {String} username user's username
+ * @apiBody {String} email user's email
+ * @apiBody {String} password user's password
+ * @apiSuccess {cookie} x-auth-token http only cookie with authorization token
+ */
 router.post("/", async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);

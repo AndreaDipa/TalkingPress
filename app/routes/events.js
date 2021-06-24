@@ -12,7 +12,13 @@ const url = `https://api.thenewsapi.com/v1/news/top?api_token=${config.get(
 )}&locale=it,us&limit=1`;
 
 //CRUD
-
+/** 
+ * @api {get} /api/events Request generic event
+ * @apiName GetEvent
+ * @apigroup Events
+ * 
+ * @apiSuccess {json} event generic event from TheNewsApi
+*/
 router.get("/", auth, async (req, res) => {
     let data = await fetch(url);
     data = await data.json();
@@ -26,7 +32,13 @@ router.get("/", auth, async (req, res) => {
     }
     res.send(event);
 });
-
+/** 
+ * @api {get} /api/events/:cat Event request of category cat
+ * @apiName GetEventCat
+ * @apigroup Events
+ * 
+ * @apiSuccess {json} event event of category cat from TheNewsApi
+*/
 router.get("/:cat", auth, async (req, res) => {
     let data = await fetch(url + `&categories=${req.params.cat}`);
     data = await data.json();
@@ -41,7 +53,16 @@ router.get("/:cat", auth, async (req, res) => {
     }
     res.send(event);
 });
-
+/** 
+ * @api {post} /api/events Save event for the current user
+ * @apiName PostEvent
+ * @apigroup Events 
+ *
+ * @apiBody {String} _id   event's id
+ * @apiBody {String} title event's title
+ * @apiBody {String} description   event's description
+ * @apiBody {String} comment   optional comment of the user
+ */
 router.post("/", auth, async (req, res) => {
     const event = new Event({
         _id: req.body._id,
@@ -49,6 +70,7 @@ router.post("/", auth, async (req, res) => {
         description: req.body.description,
         comment: req.body.comment,
     });
+    
     let user = await User.findById(req.user._id);
     if (!user) {
         user = await Twitter_User.findById(req.user._id);
@@ -75,7 +97,15 @@ router.post("/", auth, async (req, res) => {
     
     res.status(200).end();
 });
-
+/** 
+ * @api {delete} /api/events/:id Delete event for the current user
+ * @apiName DeleteEvent
+ * @apigroup Events 
+ * 
+ * @apiParam {String} id event's id
+ * 
+ * 
+*/
 router.delete("/:id", auth, async (req, res) => {
     let user = await User.findByIdAndUpdate(
         req.user._id,
@@ -92,7 +122,15 @@ router.delete("/:id", auth, async (req, res) => {
     }
     res.status(200).end();
 });
+/** 
+ * @api {put} /api/events/:id Modify event for the current user
+ * @apiName PutEvent
+ * @apigroup Events
+ * @apiParam {String} id event's id
 
+ * @apiSuccess {json} event event modified
+ * 
+*/
 router.put("/:id", auth, async (req, res) => {
     let user = await User.findOneAndUpdate(
         { _id: req.user._id, "events._id": req.params.id },

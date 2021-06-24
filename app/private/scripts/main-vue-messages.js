@@ -17,7 +17,7 @@ const app2 = Vue.createApp({
             ws.close();
         }
 
-        ws = new WebSocket(`wss://localhost/chat/${cat}`);
+        ws = new WebSocket(`wss://${window.location.hostname}/chat/${cat}`);
         ws.onopen = () => {
             console.log('connection opened');
         }

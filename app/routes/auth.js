@@ -10,6 +10,16 @@ const path = require("path");
 //ROUTER
 const router = express.Router();
 //LOGIN
+/**
+ * @api {post} /api/auth Login user
+ * @apiName LoginUser
+ * @apigroup Authorization
+ * @apiBody {String} email user's email
+ * @apiBody {String} password user's password
+ * @apiSuccess {cookie} x-auth-token http only cookie with authorization token
+ * 
+
+ */
 router.post("/", async (req, res) => {
     const { error } = validateLogin(req.body);
     if (error) return res.status(400).send(error.details[0].message);
