@@ -9,7 +9,7 @@ services:
         image:
             mongo:latest
         ports:
-            - "27017"
+            - "27017:27017"
         networks:
            - app-network
     nodeserver_1:
