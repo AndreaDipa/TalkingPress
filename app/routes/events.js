@@ -37,6 +37,8 @@ router.get("/", auth, async (req, res) => {
  * @apiName GetEventCat
  * @apigroup Events
  * 
+ * @apiParam {String} cat Unique string representing the category of the news that you want 
+ * 
  * @apiSuccess {json} event event of category cat from TheNewsApi
 */
 router.get("/:cat", auth, async (req, res) => {

@@ -50,6 +50,17 @@ define({ "api": [
     "groupTitle": "Authorization"
   },
   {
+    "type": "get",
+    "url": "/docs",
+    "title": "Documentation Page",
+    "name": "DocumentationPage",
+    "group": "Documentation",
+    "description": "<p>redirects to this apidoc page with the documentation of the web app</p>",
+    "version": "0.0.0",
+    "filename": "app/index.js",
+    "groupTitle": "Documentation"
+  },
+  {
     "type": "delete",
     "url": "/api/events/:id",
     "title": "Delete event for the current user",
@@ -101,6 +112,19 @@ define({ "api": [
     "title": "Event request of category cat",
     "name": "GetEventCat",
     "group": "Events",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "cat",
+            "description": "<p>Unique string representing the category of the news that you want</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "fields": {
         "Success 200": [

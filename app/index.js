@@ -75,6 +75,16 @@ app.get("/logout", auths, (req, res) => {
     res.clearCookie("x-auth-token").redirect("/index.html");
 });
 
+/**
+ * @api {get} /docs Documentation Page
+ * @apiName DocumentationPage
+ * @apigroup Documentation
+ * @apiDescription redirects to this apidoc page with the documentation of the web app
+ */
+app.get("/docs", auths, async (req,res) => {
+    res.redirect("/apidoc/index.html");
+});
+
 //AVVIO SERVER
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
