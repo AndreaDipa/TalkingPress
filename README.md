@@ -44,6 +44,12 @@ Lato Client:
   <li> registrarsi tramite account propretario Talking Press o effettuare il login tramite twitter; </li>
   <li> successivamente scegliere una tra le dieci categorie e testare le funzionalità tra cui: news request, real time multi rooms chat, tweets request, post tweets e visitare il profilo; </li> 
 </ul>
+L'applicazione è scalabile orizzontalmente, si possono aggiungere più server:
+<ul>
+ <li> aprire il file 'docker-compose.yml'; </li>
+ <li> aggiungere nella sezione 'services' un nuovo node_server provvisto di variabile d'ambiente che lo identifichi; </li>
+ <li> aggiungere la dipendenza ad nginx; </li>
+</ul>
 
 
 
