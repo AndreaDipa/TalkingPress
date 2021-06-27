@@ -68,14 +68,7 @@ services:
         networks:
             - app-network
         restart: on-failure
-
-  #  ws:
-  #       build:
-    #         context: ./ws
-     #   ports:
-      #      - "6000"
-      #  networks:
-       #     - app-network
+    
 networks:
     app-network:
         driver: bridge

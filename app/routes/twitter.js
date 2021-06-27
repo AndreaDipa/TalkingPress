@@ -99,7 +99,7 @@ router.get("/tweets/:topic", auth, async (req, res) => {
         access_token_secret: sec_originalText,
         timeout_ms: 60 * 1000,
     });
-
+    
     T.get(
         "search/tweets",
         {
@@ -171,7 +171,7 @@ router.post("/tweets", auth, async (req, res) => {
         "statuses/update",
         { status: `${req.body.tweet}` },
         function (err, data, response) {
-            res.status(200).end();
+            res.status(200).send(data);
         }
     );
 });
