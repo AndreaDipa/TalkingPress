@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const expressWs = require("express-ws")(router);
-const jwt = require("jsonwebtoken");
+
+ 
 const amqp = require("amqplib/callback_api");
 let general = [];
 let science = [];
@@ -48,7 +49,7 @@ function start() {
                             const data = JSON.parse(msg.content.toString());
 
                             if (data.numero != process.env.number) {
-                                switch (data.cat) {
+                                switch (msg.fields.routingKey) {
                                     case "general":
                                         general.forEach((client) => {
                                             if (client.readyState == 1)
@@ -133,7 +134,7 @@ function publish(cat, sok) {
                     exchange,
                     cat,
                     Buffer.from(
-                        `{"mex": "${mess.data}", "numero": "${process.env.number}", "cat": "${cat}"}`
+                        `{"mex": "${mess.data}", "numero": "${process.env.number}"}`
                     )
                 );
                 switch (cat) {
